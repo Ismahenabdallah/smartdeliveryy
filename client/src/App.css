@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@forward './sass/variable';
+@forward './sass/globls';
+@forward './sass/Navbar.scss';
+@forward './sass/Home.scss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*# sourceMappingURL=App.css.map */

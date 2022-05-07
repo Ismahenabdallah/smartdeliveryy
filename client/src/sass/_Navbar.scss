@@ -1,0 +1,46 @@
+
+
+nav{
+  
+    
+        a{
+            color: $main !important;
+            font-size: large;
+          
+            &:active , .active{
+            border-bottom: 1px solid $first_color;
+            color:$first_color !important
+        
+           }
+  
+        }
+        .n{
+                color: $first-color;
+        }
+ 
+    
+          .dropdown{
+                color: $main !important;
+                  ul{
+                          li{
+                                  &:hover{
+                                          background-color: $first-color;
+                                  }
+                                 
+                          }
+                  }
+          }
+       
+      
+
+     
+    
+    
+
+ 
+
+
+
+
+    
+}

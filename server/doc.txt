@@ -1,0 +1,2 @@
+MONGO_URI=mongodb+srv://ismahen:123@cluster0.p0jm9.mongodb.net/smartdeliveryy
+MONGO_URI=mongodb://localhost:27017/smartdeliveryy
