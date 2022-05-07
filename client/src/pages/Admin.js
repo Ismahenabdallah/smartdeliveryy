@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {  useNavigate } from "react-router";
 
 
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +21,9 @@ const Admin = () => {
 
 
   const dispatch = useDispatch();
+  const Navigate= useNavigate();
+
+
 
   const DeleteHandler = (id) => {
     dispatch(DeleteProfile(id))
@@ -38,12 +42,14 @@ const Admin = () => {
     <div className="  dark:bg-[#212533] dark:text-gray-400 w-full h-full p-2 mt-4">
 
       <div className=" justify-content-evenly ">
-
         <div className="mt-14 ">
           <div className=" md:flex m-7">
             <div className="flex">
               <i className="bi bi-person-fill  text-3xl "></i>
-              <h2>Listes Livreur </h2></div>
+              <h2>Listes Livreur </h2>
+              </div>
+              <hr/>
+              <div> <button className="flex justify-end" onClick={() => Navigate("/ajouter")  } > <h1>+</h1></button> </div>
             <div className=" md:ml-[40%] ">
               <Inputs type="text" placeholder="Search" name="searchTerm" value={filter} onChangeHandler={search} />
             </div>

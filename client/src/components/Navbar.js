@@ -39,6 +39,7 @@ import DetailProfile from '../pages/DetailProfile';
 
 import { useDispatch } from "react-redux";
 import Chat from '../pages/Chat';
+import Ajouter from './Ajouter';
 
 
 export default function Navbar({user}) {
@@ -288,6 +289,11 @@ export default function Navbar({user}) {
           <PrivateRouterLivreur user={user}>
             <InterfaceLivreur />
           </PrivateRouterLivreur>
+        } />
+        <Route path='/ajouter' exact element={
+      
+            <Ajouter />
+        
         } />
          
         
