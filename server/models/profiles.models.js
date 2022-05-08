@@ -13,7 +13,7 @@ const UserProfile = new Schema(
       required:true,
       default: "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"
   },
-  likes:[{type:ObjectId,ref:"users"}],
+
  
    
     adress_actuel: "string",

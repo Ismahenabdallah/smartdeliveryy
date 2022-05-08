@@ -1,7 +1,8 @@
 const ProfileModel = require('../models/profiles.models')
-const ValidateProfile = require("../validation/Profile")
+
 const cloudinary = require('cloudinary')
 const fs = require('fs')
+const { profile } = require('console')
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -106,16 +107,7 @@ const DeleteProfile = async (req, res) => {
     } catch (error) {
         res.status(404).json(error.message)
     }
-}/*
-const DetailsProfile = async (req, res) => {
-
-    let id = req.params.id;
-
-    ProfileModel.findById(id, function (err, post) {
-        if (err) return res.json({ success: false, error: err });
-        return res.json({ success: true, post });
-    });
-}*/
+}
 const DetailsProfile = async (req, res) => {
     try {
         let id = req.params.id;
@@ -126,33 +118,8 @@ const DetailsProfile = async (req, res) => {
         res.status(404).json(error.message)
     }
 }
-const like = async (req,res)=>{
-    ProfileModel.findByIdAndUpdate({_id: profile._id},{
-        $push:{likes:req.user._id}
-    },{
-        new:true
-    }).exec((err,result)=>{
-        if(err){
-            return res.status(422).json({error:err})
-        }else{
-            res.json(result)
-        }
-    })
-}
-const unlike = async (req,res)=>{
-    ProfileModel.findByIdAndUpdate( {_id: profile._id},{
-        $pull:{likes:req.user._id}
-    },{
-        new:true
-    }).exec((err,result)=>{
-        if(err){
-            return res.status(422).json({error:err})
-        }else{
-            res.json(result)
-        }
-    })
-  
-}
+
+
 
 
 
@@ -173,7 +140,6 @@ module.exports = {
     FindSingleProfile,
     DeleteProfile,
     DetailsProfile,
-    like,
-    unlike
+   
 
 }

@@ -19,7 +19,7 @@ const MyProfile = () => {
 
   //const {fullname, password, confirm_password, err, success} = data
   let profile = useSelector((state) => state.profiles.profile);
-  const { _id, user, avatar, adress_actuel, matricule_voiture, type_voiture, poids } = profile;
+  const { _id, user, avatar, adress_actuel, matricule_voiture,likes, type_voiture, poids } = profile;
   const dispatch = useDispatch();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -144,6 +144,8 @@ if(true){
                     <tr className="normal-case"><td> Email :</td> <td className="text-gray-400 dark:text-gray-600"> {user.email}</td></tr>
 
                     <tr><td>    adress_actuel :  </td> <td className="text-gray-400 dark:text-gray-600"> {adress_actuel}</td></tr>
+                    <tr><td>    likes :  </td> <td className="text-gray-400 dark:text-gray-600"> {likes.length}</td></tr>
+             
                     <tr><td>    matricule_voiture : </td> <td className="text-gray-400 dark:text-gray-600"> {matricule_voiture}</td></tr>
                      {
                       type_voiture === 'truck' ?
