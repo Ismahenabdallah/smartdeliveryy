@@ -35,7 +35,7 @@ const ConditionProfile = require('../util/ConditionProfile')
 var router = express.Router();
 const passport = require("passport");
 const { ROLES, inRole } = require("../security/Rolemiddleware");
-const { uploadAvatar, FindAllProfiles, FindSingleProfile, DeleteProfile, DetailsProfile } = require("../controllers/profile.controllers");
+const { uploadAvatar, FindAllProfiles, FindSingleProfile, DeleteProfile, DetailsProfile, like, unlike } = require("../controllers/profile.controllers");
 const { addMessage, getMessages } = require("../controllers/message.controller");
 const { AddLocalisation } = require("../controllers/position.controllers");
 /* users routes. */
@@ -71,6 +71,8 @@ router.post('/add',passport.authenticate("jwt", { session: false }),ConditionPro
 router.post("/addmsg", addMessage);
 router.post("/getmsg", getMessages);
 router.post("/localisation", AddLocalisation);
-
+/// evaluation 
+router.put('/like',passport.authenticate("jwt", { session: false }),like)
+router.put('/unlike',passport.authenticate("jwt", { session: false }),unlike)
 
 module.exports = router;

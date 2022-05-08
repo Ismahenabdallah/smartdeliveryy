@@ -316,9 +316,9 @@ export default function Navbar({user}) {
             <Admin />
           </AdminRouter>
         } />
- <Route path="/chat" element={<ForceRedirect user={user}>
+ <Route path="/chat/:id" element={
  <Chat />
-        </ForceRedirect>
+       
         } />
 
       </Routes>

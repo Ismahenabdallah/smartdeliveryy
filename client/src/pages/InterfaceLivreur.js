@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import Inputs from "../components/Inputs";
 import { useDispatch, useSelector } from 'react-redux'
 import { useToast } from "@chakra-ui/toast";
-
+import moto from '../assets/moto.png';
+import truck from '../assets/camion.png';
+import voiture from '../assets/voiture.png';
 import { AddProfile } from "../redux/actions/profileActions";
 export default function InterfaceLivreu() {
   const [form, setForm] = useState({
@@ -64,9 +66,7 @@ export default function InterfaceLivreu() {
                   <path fill="currentColor" d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"></path>
                 </svg>
                 File format is incorrect.</p>
-              <div className="flex items-center">
-
-              </div>
+             
             </div>
             <div className="p-3 bg-yellow-500 rounded-b-lg break-words text-white">
               PNG ,JPEG,WEBP
@@ -112,7 +112,7 @@ export default function InterfaceLivreu() {
 
           <div className="p-6 shadow-lg   form_profile  border-1 rounded"  >
 
-            <form className="  " method="post" onSubmit={onSubmit.bind(this)} encType='multipart/form-data'>
+            <form className=" w-[100vh] " method="post" onSubmit={onSubmit.bind(this)} encType='multipart/form-data'>
 
 
 
@@ -125,8 +125,31 @@ export default function InterfaceLivreu() {
 
               <Inputs name="adress_actuel" placeholder="adress_actuel" type="text" errors={errors.adress_actuel} onChangeHandler={onChangeHandler} value={form && form.adress_actuel ? form.adress_actuel : ""} />
               <Inputs name="matricule_voiture" placeholder="matricule_voiture" type="number" errors={errors.matricule_voiture} onChangeHandler={onChangeHandler} value={form && form.matricule_voiture ? form.matricule_voiture : ""} />
-              <Inputs name="type_voiture" placeholder="type_voiture" type="text" onChangeHandler={onChangeHandler} errors={errors.type_voiture} value={form && form.type_voiture ? form.type_voiture : ""} />
-              <Inputs name="poids" placeholder="poids" type="text" onChangeHandler={onChangeHandler} errors={errors.poids} value={form && form.poids ? form.poids : ""} />
+                     <Inputs name="poids" placeholder="poids" type="text" onChangeHandler={onChangeHandler} errors={errors.poids} value={form && form.poids ? form.poids : ""} />
+
+              <div className='flex space-x-0 space-y-0 m-0' > 
+             <div className=" flex m-0">
+               
+             <input   type="radio" name="type_voiture" value="truck" id="type_voiture" onChange={onChangeHandler} required />
+             <img  className="w-[24%]"src={truck} alt=""/>
+         
+        
+              </div>
+                <div className="flex m-0 ">
+                  <input   type="radio" name="type_voiture" value="moto" id="type_voiture" onChange={onChangeHandler} required />
+                 <img className="w-[24%] " src={moto} alt=""/>
+         
+        
+                </div>
+                <div className="flex ">
+                  <input   type="radio" name="type_voiture" value="voiture" id="type_voiture" onChange={onChangeHandler} required />
+                 <img  className="w-[24%]" src={voiture} alt=""/>
+         
+        
+                </div>
+               
+              </div>
+
 
 
               <div className="d-flex justify-content-between">

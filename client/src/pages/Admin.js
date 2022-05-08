@@ -49,13 +49,16 @@ const Admin = () => {
               <h2>Listes Livreur </h2>
               </div>
               <hr/>
-              <div> <button className="flex justify-end" onClick={() => Navigate("/ajouter")  } > <h1>+</h1></button> </div>
+              
             <div className=" md:ml-[40%] ">
               <Inputs type="text" placeholder="Search" name="searchTerm" value={filter} onChangeHandler={search} />
             </div>
 
 
           </div>
+          <div className="ml-10">
+                 <button className=" b" onClick={() => Navigate("/ajouter")  } > Ajouter un utilisateur </button>
+                  </div>
 
           <div className=" md:grid md:grid-cols-3  space-x-3 mr-20 "  >
 
@@ -97,10 +100,17 @@ const Admin = () => {
                         <p >
                           poids : {poids}
                         </p>
+                        
+                        <p className="p-1 " >
+                          action : 
+                          <button className="btn  ml-4 btn-outline-danger" onClick={()=>DeleteHandler(_id)}>Delete</button>
+  
+                        </p>
 
 
 
                       </blockquote>
+                      
 
                     </div>
                   </figure>

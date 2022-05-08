@@ -7,7 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router"
 
 
-
+import moto from '../assets/moto.png';
+import truck from '../assets/camion.png';
+import voiture from '../assets/voiture.png';
 
 
 
@@ -73,9 +75,33 @@ export default function DetailProfile() {
                         </p>
 
 
-                        <p >
-                          type_voiture : {type_voiture}
-                        </p>
+                        <>
+                          {
+                            type_voiture === 'truck' ?
+                              (
+                                <p className='flex '> type_voiture :  {type_voiture} <img className="w-[14%]" src={truck} alt="" /></p>
+
+                              ) : ""
+
+                          }
+                           {
+                            type_voiture === 'moto' ?
+                              (
+                                <p className='flex '> type_voiture :  {type_voiture} <img className="w-[14%]" src={moto} alt="" /></p>
+
+                              ) : ""
+
+                          }
+                           {
+                            type_voiture === 'voiture' ?
+                              (
+                                <p className='flex '> type_voiture :  {type_voiture} <img className="w-[14%]" src={voiture} alt="" /></p>
+
+                              ) : ""
+
+                          }
+                        </>
+                        
                         <p >
                           poids : {poids}
                         </p>
@@ -83,8 +109,7 @@ export default function DetailProfile() {
 
 
                       </blockquote>
-                      <button type="button" className="inline-block px-6 py-2 border-2 border-green-500 text-gray-400 font-medium text-xs leading-tight uppercase rounded hover:bg-green-500 hover:bg-opacity-2 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">cantacter</button>
-    
+                    
                                     </div>
                   </div>
                 </div>

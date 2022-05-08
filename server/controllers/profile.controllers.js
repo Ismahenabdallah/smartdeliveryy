@@ -126,6 +126,33 @@ const DetailsProfile = async (req, res) => {
         res.status(404).json(error.message)
     }
 }
+const like = async (req,res)=>{
+    ProfileModel.findByIdAndUpdate({_id: profile._id},{
+        $push:{likes:req.user._id}
+    },{
+        new:true
+    }).exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
+        }
+    })
+}
+const unlike = async (req,res)=>{
+    ProfileModel.findByIdAndUpdate( {_id: profile._id},{
+        $pull:{likes:req.user._id}
+    },{
+        new:true
+    }).exec((err,result)=>{
+        if(err){
+            return res.status(422).json({error:err})
+        }else{
+            res.json(result)
+        }
+    })
+  
+}
 
 
 
@@ -146,5 +173,7 @@ module.exports = {
     FindSingleProfile,
     DeleteProfile,
     DetailsProfile,
+    like,
+    unlike
 
 }
