@@ -21,7 +21,7 @@ export const Registration = (form,setMessage,setSuccessful)=>dispatch=>{
       })
 }
 
-export const LoginAction = (form, navigate)=>dispatch=>{
+export const LoginAction = (form )=>dispatch=>{
     axios.post('/api/login', form) 
     .then(res=>{
       const {token} = res.data
@@ -29,12 +29,16 @@ export const LoginAction = (form, navigate)=>dispatch=>{
       const decode = jwt_decode(token)
       dispatch(setUser(decode))
       setAuth(token)
+      
+      
+      
     })
     .catch(err=>{
         dispatch({
             type: ERRORS,
             payload: err.response.data
         })
+
     })
 }
 

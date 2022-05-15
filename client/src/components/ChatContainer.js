@@ -2,18 +2,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import ChatInput from "./ChatInput";
-import { Logout } from "../redux/actions/authActions";
+
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { sendMessageRoute, recieveMessageRoute } from "../util/ApiRouter";
-import { useDispatch, useSelector } from "react-redux";
-import { BiPowerOff } from "react-icons/bi";
+import { useSelector } from "react-redux";
+
 export default function ChatContainer({ currentChat, socket }) {
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
+ 
   const auth = useSelector(state => state.auth)
-  const dispatch = useDispatch();
+
   useEffect(async () => {
     const data = await auth.user
     const response = await axios.post(recieveMessageRoute, {
@@ -31,9 +32,7 @@ export default function ChatContainer({ currentChat, socket }) {
     };
     getCurrentChat();
   }, [currentChat]);
-  const LogoutHanlder = () => {
-    dispatch(Logout())
-  }
+ 
   const handleSendMsg = async (msg) => {
     const data =auth.user
     socket.current.emit("send-msg", {
@@ -84,9 +83,7 @@ export default function ChatContainer({ currentChat, socket }) {
             <h3>{currentChat.fullname}</h3>
           </div>
         </div>
-        <Button onClick={LogoutHanlder}>
-      <BiPowerOff />
-    </Button>
+       
       </div>
       <div className="chat-messages mt-10">
         {messages.map((message) => {

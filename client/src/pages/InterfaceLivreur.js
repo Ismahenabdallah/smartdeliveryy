@@ -124,7 +124,7 @@ export default function InterfaceLivreu() {
               <Inputs name="file" type="file" onChangeHandler={(e) => { setAvatar(e.target.files[0]) }} />
 
               <Inputs name="adress_actuel" placeholder="adress_actuel" type="text" errors={errors.adress_actuel} onChangeHandler={onChangeHandler} value={form && form.adress_actuel ? form.adress_actuel : ""} />
-              <Inputs name="matricule_voiture" placeholder="matricule_voiture" type="number" errors={errors.matricule_voiture} onChangeHandler={onChangeHandler} value={form && form.matricule_voiture ? form.matricule_voiture : ""} />
+              <Inputs name="matricule_voiture" placeholder="matricule_voiture" type="text" errors={errors.matricule_voiture} onChangeHandler={onChangeHandler} value={form && form.matricule_voiture ? form.matricule_voiture : ""} />
                      <Inputs name="poids" placeholder="poids" type="text" onChangeHandler={onChangeHandler} errors={errors.poids} value={form && form.poids ? form.poids : ""} />
 
               <div className='flex space-x-0 space-y-0 m-0' > 

@@ -25,19 +25,25 @@ return(
          
           <div className="contacts ">
             {contacts.map((contact, index) => {
+              
               return (
+                <div key={index}>
+                {contact.fullname ==="admin" ? "" :
                 <div
-                  key={contact.id}
-                  className={`contact ${
-                    index === currentSelected ? "selected" : ""
-                  }`}
-                  onClick={() => changeCurrentChat(index, contact)}
-                >
-                  <img className="w-14"  src ={contact.avatarImage} alt=""/>
-                  <div className="username">
-                    <h3>{contact.fullname}</h3>
-                  </div>
+                key={contact.id}
+                className={`contact ${
+                  index === currentSelected ? "selected" : ""
+                }`}
+                onClick={() => changeCurrentChat(index, contact)}
+              >
+                <img className="w-14"  src ={contact.avatarImage} alt=""/>
+                <div className="username">
+                  <h3>{contact.fullname}</h3>
                 </div>
+              </div>
+              
+               }
+               </div>
               );
             })}
           </div>

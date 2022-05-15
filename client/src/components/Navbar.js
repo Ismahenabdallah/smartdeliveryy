@@ -273,7 +273,7 @@ export default function Navbar({user}) {
         <Route path='/' exact element={<Home />} />
         <Route path="/setavatar" element={
            
-           <SetAvatar />
+           <SetAvatar user={user} />
        
       } />
         <Route path='/login' exact element={<ForceRedirect user={user}>

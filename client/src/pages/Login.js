@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 export default function Login() {
   const [loading, setLoading] = useState(false);
   
-  const [message, setMessage] = useState("")
+
  
   const [form, setForm] = useState({})
   const dispatch = useDispatch()
@@ -31,9 +31,9 @@ export default function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(LoginAction(form, setMessage,setLoading))
+    dispatch(LoginAction(form))
    
-
+setLoading(true)
 
   }
 
@@ -72,7 +72,7 @@ export default function Login() {
             <div className="d-flex justify-content-between">
               
             <div className='flex'>
-            <button className="btn btn-outline-warning  text-gray-400 " disabled={loading}>
+            <button className="btn  flex btn-outline-warning  text-gray-400 " disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}
@@ -87,18 +87,7 @@ export default function Login() {
   
           </form>
           <div className=' button-div w-fit h-full '>
-          {message && (
-            <div className="form-group ">
-              <div
-                className={
-                 "alert alert-danger"
-                }
-                role="alert"
-              >
-                {message}
-              </div>
-            </div>
-          )}
+         
             <p className='font-bold   text-[18px] text-slate-400 '> don't have an account ?</p>
             <button className='b' onClick={() => navigate("/register")} >register</button>
           </div>

@@ -13,11 +13,11 @@ module.exports = function ValidateProfile(data) {
 
 
  
-
+/*
   if ((data.matricule_voiture).length > 8 || (data.matricule_voiture).length < 8) {
     errors.matricule_voiture = " Must be 8 number ";
   }
-
+*/
   if (validator.isEmpty(data.adress_actuel)) {
     errors.adress_actuel = "Required adress_actuel";
   }
