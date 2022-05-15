@@ -27,7 +27,14 @@ const UserModel = new Schema(
       type: String, 
       unique: true },
      
-  
+      isAvatarImageSet: {
+        type: Boolean,
+        default: false,
+      },
+      avatarImage: {
+        type: String,
+        default: "",
+      },
 
 },
   {

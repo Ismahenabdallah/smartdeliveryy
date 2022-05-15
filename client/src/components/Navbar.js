@@ -40,6 +40,8 @@ import DetailProfile from '../pages/DetailProfile';
 import { useDispatch } from "react-redux";
 import Chat from '../pages/Chat';
 import Ajouter from './Ajouter';
+import SetAvatar from './SetAvatar';
+
 
 
 export default function Navbar({user}) {
@@ -144,7 +146,10 @@ export default function Navbar({user}) {
             to="/myprofile"
             >My Profile</NavLink >
         </li>
-        <li className="nav-item  md:ml-[120vh] ">
+        <li className="nav-item p-2">
+                <NavLink  className="nav-link p-0 active" to ="/chat"> Chat</NavLink>
+              </li>
+        <li className="nav-item  md:ml-[100vh] ">
               <NavLink className="  logout btn btn-outline-warning dark:text-[#fff] " to="/" onClick={LogoutHanlder}>
              Logout
                     </NavLink>
@@ -266,7 +271,11 @@ export default function Navbar({user}) {
 
       <Routes >
         <Route path='/' exact element={<Home />} />
-    
+        <Route path="/setavatar" element={
+           
+           <SetAvatar />
+       
+      } />
         <Route path='/login' exact element={<ForceRedirect user={user}>
           <Login  />
         </ForceRedirect>
@@ -316,10 +325,15 @@ export default function Navbar({user}) {
             <Admin />
           </AdminRouter>
         } />
- <Route path="/chat/:id" element={
+ <Route path="/chat" element={
  <Chat />
        
+
         } />
+        
+       
+ 
+    
 
       </Routes>
 

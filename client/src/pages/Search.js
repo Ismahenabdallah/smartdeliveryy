@@ -12,7 +12,7 @@ const Search = () => {
 
 
 
-
+    
 
     let profiles = useSelector((state) => state.profiles);
 
@@ -48,7 +48,11 @@ const Search = () => {
                 <div className=" md:flex m-7">
                     <div className="flex">
                         <i className="bi bi-person-fill  text-3xl "></i>
-                        <h2>Listes Livreur </h2></div>
+                        <h2>Listes Livreur </h2>
+                        
+                       
+                        
+                        </div>
                     <div className=" md:ml-[40%] ">
                         <Inputs type="text" placeholder="Search" name="searchTerm" value={filter} onChangeHandler={search} />
                     </div>
@@ -75,7 +79,7 @@ const Search = () => {
                                         <img className=" w-[30%]" src={avatar} alt="Forest" />
                                         <div className="">
                                             <div className="font-bold text-xl text-gray-600 ml-2 mb-2 ">{user.fullname}   </div>
-                                            <Link  to={`/chat/${_id}`} type="button" className="inline-block px-6 py-2 ml-2 border-2 border-yellow-500 text-gray-400 font-medium text-xs leading-tight uppercase rounded  hover:text-gray-800 hover:bg-yellow-500 hover:bg-opacity-2 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">cantacter</Link>
+                                            <Link  to={`/chat`} type="button" className="inline-block px-6 py-2 ml-2 border-2 border-yellow-500 text-gray-400 font-medium text-xs leading-tight uppercase rounded  hover:text-gray-800 hover:bg-yellow-500 hover:bg-opacity-2 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">cantacter</Link>
     
                                         </div>
                                         <div className="">

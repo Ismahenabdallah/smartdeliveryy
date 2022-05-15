@@ -7,10 +7,11 @@ var logger = require('morgan');
 require('dotenv').config()
 const mongoose = require('mongoose')
 var indexRouter = require('./routes/index');
-const socket = require("socket.io");
+
+
 
 const passport = require('passport')
-
+var clc = require("cli-color");
 var app = express();
 
 
@@ -41,7 +42,7 @@ mongoose.connect(process.env.MONGO_URI,
         useNewUrlParser: true,
        
     })
-    .then(() => console.log("connected"))
+    .then(() => console.log(clc.yellow.underline(`Server running on PORT ${process.env.PORT}...`)))
     .catch(err => console.log(err))
 app.use('/api', indexRouter);
 

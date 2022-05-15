@@ -26,7 +26,9 @@ const {
   Login,
   verifyUser,
   forgotPassword,
-  resetPassword
+  resetPassword,
+  getAllUsers,
+  setAvatar
 
 
 } = require('../controllers/users.controllers')
@@ -68,9 +70,11 @@ router.post('/add',passport.authenticate("jwt", { session: false }),ConditionPro
 
 ///chat 
 
-router.post("/addmsg", addMessage);
-router.post("/getmsg", getMessages);
+router.post("/addmsg/", addMessage);
+router.post("/getmsg/", getMessages);
 router.post("/localisation", AddLocalisation);
+router.get("/allusers/:id", getAllUsers);
+router.post("/setavatar/:id", setAvatar);
 
 
 

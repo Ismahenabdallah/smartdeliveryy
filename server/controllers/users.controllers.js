@@ -102,7 +102,9 @@ const Login = async (req, res) => {
                 id: user._id,
                 fullname: user.fullname,
                 email: user.email,
-                role: user.role
+                role: user.role,
+                isAvatarImageSet: user.isAvatarImageSet,
+                avatarImage: user.avatarImage
               }, process.env.PRIVATE_KEY, { expiresIn: '1h' });
               res.status(200).json({
                 message: "success",
@@ -154,21 +156,21 @@ const forgotPassword = async (req, res) => {
 
     if (!user) return res.status(400).json({ msg: "This email does not exist." })
 
-  
+
 
     const access_token = createAccessToken({ id: user._id })
- 
-   
-  const url = `http://localhost:3000/reset/${access_token}`
- send(email,url,'reset-password')
-  
- //send(email,'Reset Password',`<h1>Email Confirmation</h1>
- //<h3>Hello ${user.fullname}</h3>
- // <a href=http://localhost:3000/reset/${access_token}> Click here</a>`) 
-//
+
+
+    const url = `http://localhost:3000/reset/${access_token}`
+    send(email, url, 'reset-password')
+
+    //send(email,'Reset Password',`<h1>Email Confirmation</h1>
+    //<h3>Hello ${user.fullname}</h3>
+    // <a href=http://localhost:3000/reset/${access_token}> Click here</a>`) 
+    //
 
     res.json({ msg: "Re-send the password, please check your email." })
-   // await UserModel.updateOne({ _id: user.id },{ password: "" })
+    // await UserModel.updateOne({ _id: user.id },{ password: "" })
   } catch (err) {
     return res.status(500).json({ msg: err.message })
   }
@@ -176,20 +178,20 @@ const forgotPassword = async (req, res) => {
 
 
 const resetPassword = async (req, res) => {
-  
 
-    try {
-      const {password} = req.body
-     
-      const passwordHash = await bcrypt.hashSync(password, 12)
 
-      await UserModel.findOneAndUpdate({_id: req.user.id}, {
-          password: passwordHash
-      })
+  try {
+    const { password } = req.body
 
-      res.json({msg: "Password successfully changed!"})
+    const passwordHash = await bcrypt.hashSync(password, 12)
+
+    await UserModel.findOneAndUpdate({ _id: req.user.id }, {
+      password: passwordHash
+    })
+
+    res.json({ msg: "Password successfully changed!" })
   } catch (err) {
-      return res.status(500).json({msg: err.message})
+    return res.status(500).json({ msg: err.message })
   }
 }
 
@@ -197,16 +199,65 @@ const resetPassword = async (req, res) => {
 
 
 
+const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await UserModel.find({ _id: { $ne: req.params.id } }).select([
+      "email",
+      "fullname",
+      "avatarImage",
+      "id",
+    ]);
+    return res.json(users);
+  } catch (ex) {
+    next(ex);
+  }
+};
 
+const setAvatar = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const avatarImage = req.body.image;
+    const userData = await UserModel.findByIdAndUpdate(
+      userId,
+      {
+        isAvatarImageSet: true,
+        avatarImage,
+      },
+      { new: true }
+    );
+    return res.json({
+      isSet: userData.isAvatarImageSet,
+      image: userData.avatarImage,
+    });
+  } catch (ex) {
+    next(ex);
+  }
+};
 
+/*
+const fetch = require ("node-fetch");
 
+ url=`https://api.multiavatar.com/4645646/${Math.round(Math.random() * 1000)}`
 
+const get_data = async  url => {
+  try {
+    const response = await fetch(url);
+   
+   //console.log(response.url)
+  } catch (error) {
+    console.log(error);
+  }
+};
+get_data(url)
+*/
 module.exports = {
   Register,
   Login,
   verifyUser,
   forgotPassword,
   resetPassword,
-
+  getAllUsers,
+  setAvatar,
+//get_data
 
 };

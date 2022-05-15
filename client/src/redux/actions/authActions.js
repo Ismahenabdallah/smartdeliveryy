@@ -4,7 +4,7 @@ import jwt_decode from 'jwt-decode'
 import { setAuth } from '../../util/setAuth';
 
 export const Registration = (form,setMessage,setSuccessful)=>dispatch=>{
-      axios.post('http://localhost:5000/api/register', form) 
+      axios.post('/api/register', form) 
       .then(res=>{
         setMessage("verify your email please")
         setSuccessful(true)
@@ -22,7 +22,7 @@ export const Registration = (form,setMessage,setSuccessful)=>dispatch=>{
 }
 
 export const LoginAction = (form, navigate)=>dispatch=>{
-    axios.post('http://localhost:5000/api/login', form) 
+    axios.post('/api/login', form) 
     .then(res=>{
       const {token} = res.data
       localStorage.setItem('jwt', token)
