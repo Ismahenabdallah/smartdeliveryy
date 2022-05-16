@@ -27,10 +27,9 @@ return(
             {contacts.map((contact, index) => {
               
               return (
-                <div key={index}>
+                <div key={contact.id}>
                 {contact.fullname ==="admin" ? "" :
                 <div
-                key={contact.id}
                 className={`contact ${
                   index === currentSelected ? "selected" : ""
                 }`}
@@ -76,25 +75,14 @@ const Container = styled.div`
   grid-template-rows: auto auto ;
   overflow: hidden;
   background-color: #080420;
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    justify-content: center;
-    img {
-      height: 2rem;
-    }
-    h3 {
-      color: white;
-      text-transform: uppercase;
-    }
-  }
+
   .contacts {
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
     gap: 0.8rem;
+   
     &::-webkit-scrollbar {
       width: 0.2rem;
       &-thumb {
@@ -107,9 +95,10 @@ const Container = styled.div`
       background-color: #ffffff34;
       min-height: 5rem;
       cursor: pointer;
-      width: 90%;
+      width:100%;
+      text-align:left;
       border-radius: 0.2rem;
-      padding: 0.4rem;
+      padding:1rem 3rem;
       display: flex;
       gap: 1rem;
       align-items: center;

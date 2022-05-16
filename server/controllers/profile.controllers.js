@@ -2,7 +2,7 @@ const ProfileModel = require('../models/profiles.models')
 
 const cloudinary = require('cloudinary')
 const fs = require('fs')
-const { profile } = require('console')
+
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -20,9 +20,9 @@ const removeTmp = (path) => {
 
 
 const uploadAvatar = (req, res, next) => {
-    
+
     try {
-      
+
         const file = req.files.file;
 
         cloudinary.v2.uploader.upload(file.tempFilePath, {
@@ -31,17 +31,17 @@ const uploadAvatar = (req, res, next) => {
             if (err) return res.status(400).json(err)
 
             removeTmp(file.tempFilePath)
-        
+
             res.json({ url: result.secure_url })
-           
-          
-          await   ProfileModel.findOne({ user: req.user.id })
+
+
+            await ProfileModel.findOne({ user: req.user.id })
                 .then(async (profile) => {
                     req.body.avatar = result.secure_url
                     if (!profile) {
 
 
-                        req.body.avatar=result.secure_url
+                        req.body.avatar = result.secure_url
                         req.body.user = req.user.id
 
                         await ProfileModel.create(req.body, function (err) {
@@ -111,7 +111,7 @@ const DeleteProfile = async (req, res) => {
 const DetailsProfile = async (req, res) => {
     try {
         let id = req.params.id;
-        const data = await ProfileModel.findById(id ).populate('user', ["fullname", "email", "role"])
+        const data = await ProfileModel.findById(id).populate('user', ["fullname", "email", "role"])
         res.status(200).json(data)
 
     } catch (error) {
@@ -119,7 +119,29 @@ const DetailsProfile = async (req, res) => {
     }
 }
 
+const likes = async (req, res) => {
+    try {
+        const post = await ProfileModel.findById(req.params.id)
 
+        if (post.likes.filter(like => like.user.toString() === req.user.id).length < 5) {
+            await post.likes.unshift({ user: req.user.id })
+
+            await post.save()
+            res.json(post.likes)
+
+        }
+        else {
+res.json("already_likes")
+        }
+
+
+
+    }
+    catch (error) {
+        console.error(error.message)
+
+    }
+}
 
 
 
@@ -140,6 +162,7 @@ module.exports = {
     FindSingleProfile,
     DeleteProfile,
     DetailsProfile,
-   
+    likes
+
 
 }

@@ -72,7 +72,7 @@ setLoading(true)
             <div className="d-flex justify-content-between">
               
             <div className='flex'>
-            <button className="btn  flex btn-outline-warning  text-gray-400 " disabled={loading}>
+            <button className="btn  flex btn-outline-warning w-[80%] md:w-auto  text-gray-400 " disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>
               )}

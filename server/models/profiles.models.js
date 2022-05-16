@@ -20,7 +20,15 @@ const UserProfile = new Schema(
     matricule_voiture: "string",
     type_voiture: "string",
     poids: "string",
-   
+    likes:[
+     {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "users",
+        required: true
+      }
+     }
+   ]
     
    
   },
