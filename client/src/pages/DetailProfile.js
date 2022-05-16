@@ -2,7 +2,7 @@
 
 
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useParams } from "react-router"
 
@@ -14,13 +14,22 @@ import voiture from '../assets/voiture.png';
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useEffect } from "react";
+import { GetAllProfiles } from "../redux/actions/profileActions";
+import { FaStar } from "react-icons/fa";
 
 
 export default function DetailProfile() {
   let profiles = useSelector((state) => state.profiles);
-  // const { _id, user, avatar, adress_actuel, matricule_voiture, type_voiture, poids } = profile;
- 
+  const dispatch = useDispatch();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ useEffect(async () => {
 
+
+  await dispatch(GetAllProfiles());
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
   const { id } = useParams();
   const toastOptions = {
@@ -43,19 +52,7 @@ export default function DetailProfile() {
         console.log(err)
     })
 }
-  //const [data, setData] = useState({})
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const res = await axios.get(`http://localhost:5000/api/${id}`)
-  //       return ({ ...data, err: "", success: res.data.msg })
-  //     }
-  //     catch (err) {
-  //       err.response.data.msg && setData({ ...data, err: err.response.data.msg, success: '' })
-  //     }
-  //   }
-  //   fetchData();
-  // }, [data,id]);
+  
 
 
 
@@ -103,7 +100,7 @@ export default function DetailProfile() {
                           {
                             type_voiture === 'truck' ?
                               (
-                                <p className='flex '> type_voiture :  {type_voiture} <img className="w-[14%]" src={truck} alt="" /></p>
+                                <p className='flex '> type_voiture :  {type_voiture} <img className="w-[10%] ml-2" src={truck} alt="" /></p>
 
                               ) : ""
 
@@ -111,7 +108,7 @@ export default function DetailProfile() {
                           {
                             type_voiture === 'moto' ?
                               (
-                                <p className='flex '> type_voiture :  {type_voiture} <img className="w-[14%]" src={moto} alt="" /></p>
+                                <p className='flex '> type_voiture :  {type_voiture} <img className="w-[10%] ml-2  " src={moto} alt="" /></p>
 
                               ) : ""
 
@@ -119,7 +116,7 @@ export default function DetailProfile() {
                           {
                             type_voiture === 'voiture' ?
                               (
-                                <p className='flex '> type_voiture :  {type_voiture} <img className="w-[14%]" src={voiture} alt="" /></p>
+                                <p className='flex '> type_voiture :  {type_voiture} <img className="w-[10%] ml-2 " src={voiture} alt="" /></p>
 
                               ) : ""
 
@@ -132,9 +129,15 @@ export default function DetailProfile() {
 
 <div className="flex">
 <p> Evaluation : </p>
-<button className="btn btn-secondary" onClick={()=>{likePost(id)}}> <i className="bi bi-hand-thumbs-up"></i></button>
+<i className="bi bi-hand-thumbs-up cursor-pointer text-2xl"   onClick={()=>{likePost(id)}}></i>
 </div>
+<div className="flex"> Evaluation : {likes.map((_,index)=>{
+ return (<FaStar key={index} size={24} className="mr-2 cursor-pointer text-yellow-400"/>)
+                             
+                                        })
 
+                                        }
+                                        </div>
 
 
                       </blockquote>

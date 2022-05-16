@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-
+import { FaStar } from 'react-icons/fa';
 import { useDispatch, useSelector } from "react-redux";
 import Inputs from "../components/Inputs";
 
@@ -64,7 +64,7 @@ const Search = () => {
 
                     {
 
-                        dataSearch.map(({ _id, user, avatar, adress_actuel, type_voiture }) => (
+                        dataSearch.map(({ _id, user, avatar, adress_actuel, likes  ,type_voiture }) => (
 
 
 
@@ -76,7 +76,17 @@ const Search = () => {
 
                                 
                                     <div className="rounded overflow-hidden space-y-4   shadow-lg">
-                                        <img className=" w-[30%]" src={avatar} alt="Forest" />
+                                       
+                                      <div className="  md:space-x-0">
+                                      <img className=" w-[30%]" src={avatar} alt="Forest" /> 
+                                     <div className="flex"> Evaluation : {likes.map((_,index)=>{
+ return (<FaStar key={index} size={24} className="mr-2 cursor-pointer text-yellow-400"/>)
+                             
+                                        })
+
+                                        }
+                                        </div>
+                                      </div>
                                         <div className="">
                                             <div className="font-bold text-xl text-gray-600 ml-2 mb-2 ">{user.fullname}   </div>
                                             <Link  to={`/chat`} type="button" className="inline-block px-6 py-2 ml-2 border-2 border-yellow-500 text-gray-400 font-medium text-xs leading-tight uppercase rounded  hover:text-gray-800 hover:bg-yellow-500 hover:bg-opacity-2 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">cantacter</Link>

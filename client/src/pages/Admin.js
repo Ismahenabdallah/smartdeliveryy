@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Inputs from "../components/Inputs";
 
 import { DeleteProfile, GetAllProfiles } from "../redux/actions/profileActions";
+import { FaStar } from "react-icons/fa";
 const Admin = () => {
   let profiles = useSelector((state) => state.profiles);
   const [filter, setFilter] = useState('')
@@ -84,9 +85,7 @@ const Admin = () => {
                         <p >
                           email : {user.email}
                         </p>
-                        <p >
-                           {likes.length} : likes 
-                        </p>
+                       
                       
                         <p >
 
@@ -110,7 +109,13 @@ const Admin = () => {
   
                         </p>
 
+                        <div className="flex"> Evaluation : {likes.map((_,index)=>{
+ return (<FaStar key={index} size={24} className="mr-2 cursor-pointer text-yellow-400"/>)
+                             
+                                        })
 
+                                        }
+                                        </div>
 
                       </blockquote>
                       
