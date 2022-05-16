@@ -1,4 +1,4 @@
-import { useToast } from "@chakra-ui/toast";
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import moto from '../assets/moto.png';
@@ -7,12 +7,13 @@ import voiture from '../assets/voiture.png';
 import succes from '../assets/succes.png'
 import danger from '../assets/false.png'
 import { useDispatch, useSelector } from "react-redux";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { GetProfile } from "../redux/actions/profileActions";
 var id
 
 const MyProfile = () => {
-  const toast = useToast();
+ 
 
 
 
@@ -32,30 +33,19 @@ const MyProfile = () => {
   }, []);
 
   const [code, setCode] = useState('')
-
+  const toastOptions = {
+    position: "top-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
 
 
   function active() {
     if (code === '') {
       console.log('il faut saisir un code ');
-      toast({
-        title: "il faut saisir un code.",
-        status: "warning",
-        duration: 3000,
-        isClosable: true,
-        position: "top-right",
-        render: (props) => (
-          <div className="bg-red-500 shadow-lg mx-auto w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
-            <div className="bg-red-500 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-red-400 ">
-              <p className="font-bold text-white flex items-center">
-              <img className="w-4" src={danger} alt=""/>
-                il faut saisir un code.</p>
-             
-            </div>
-           
-          </div>
-        ),
-      });
+      toast.warning("il faut saisir un code", toastOptions);
     } else {
 
 
@@ -81,24 +71,7 @@ const MyProfile = () => {
       })
 
 if(true){
-  toast({
-    title: "votre position est mapper.",
-    status: "success",
-    duration: 3000,
-    isClosable: true,
-    position: "top-right",
-    render: (props) => (
-      <div className="bg-green-500 shadow-lg mx-auto mt-20 mr-5 w-96 max-w-full text-sm pointer-events-auto bg-clip-padding rounded-lg block mb-3" id="static-example" role="alert" aria-live="assertive" aria-atomic="true" data-mdb-autohide="false">
-        <div className="bg-green-500 flex justify-between items-center py-2 px-3 bg-clip-padding border-b border-green-400 rounded-lg">
-          <p className="font-bold text-white flex items-center">
-           <img className="w-4" src={succes} alt=""/>
-            votre position est mapper...</p>
-         
-        </div>
-
-      </div>
-    ),
-  });
+toast.success('votre position est mapper',toastOptions)
 }
 
 
@@ -244,6 +217,7 @@ if(true){
 
 
       )}
+        <ToastContainer />
     </div>
 
   )

@@ -5,39 +5,44 @@
 import { useSelector } from "react-redux";
 
 import { useParams } from "react-router"
-import { FaStar } from 'react-icons/fa'
 
+import axios from "axios";
 import moto from '../assets/moto.png';
 import truck from '../assets/camion.png';
 import voiture from '../assets/voiture.png';
-import { useState } from "react";
 
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export default function DetailProfile() {
   let profiles = useSelector((state) => state.profiles);
   // const { _id, user, avatar, adress_actuel, matricule_voiture, type_voiture, poids } = profile;
-  const [likes, setlikes] = useState(0);
-  const starts = Array(5).fill(0)
+ 
 
-  const colors = {
-    orange: "#ffba5a",
-    gray: "#a9a9a9"
-  }
 
-  const [h, setH] = useState(undefined)
-  const handleClick = value => {
-    setlikes(value)
-  }
-  const handleMouseOver = value => {
-    setH(value)
-  }
-  const handleMouseleave = () => {
-
-    setH(undefined)
-  }
   const { id } = useParams();
+  const toastOptions = {
+    position: "top-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+  const likePost =async  ()=>{
+   await axios.put(`http://localhost:5000/api/like/${id}`)
+    .then(result=>{
+   
+    console.log(result)
 
+   if(result.data==="already_likes"){
+    toast.error("already_likes", toastOptions);
+   }
+    }).catch(err=>{
+        console.log(err)
+    })
+}
   //const [data, setData] = useState({})
   // useEffect(() => {
   //   async function fetchData() {
@@ -61,13 +66,13 @@ export default function DetailProfile() {
 
         {
 
-          profiles.profiles.map(({ _id, user, avatar, adress_actuel, matricule_voiture, type_voiture, poids }) => (
+          profiles.profiles.map(({ _id, user, avatar, adress_actuel, likes ,matricule_voiture, type_voiture, poids }) => (
 
 
 
 
 
-            <div key={_id} className="">
+            <div  key={_id}  className="">
               {id === _id ? (
                 <div className="max-w-md mx-auto mt-14 bg-[#fff] rounded-xl shadow-md overflow-hidden md:max-w-2xl">
                   <div className="md:grid md:grid-cols-2">
@@ -125,45 +130,15 @@ export default function DetailProfile() {
                           poids : {poids}
                         </p>
 
+<div className="flex">
+<p> Evaluation : </p>
+<button className="btn btn-secondary" onClick={()=>{likePost(id)}}> <i className="bi bi-hand-thumbs-up"></i></button>
+</div>
+
 
 
                       </blockquote>
-                      <div className="">
-                      <div className="flex">
-                          {starts.map((_, index) => {
-                            return (<FaStar key={index} size={24} className="mr-7 cursor-pointer"
-                             
-                              color={(h || likes > index ? colors.orange : colors.gray)}
-
-
-                              onClick={() => { handleClick(index + 1) }}
-                              //*onMouseOver={() => handleMouseOver(index + 1)}
-                              //onMouseLeave={handleMouseleave}*/
-                            />)
-                           
-                          }
-                         
-                          )
-
-                         
-                          }
-
-
-                        
-                          
-                           
-                          
-                        
-                        
-
-
-                        </div>
-
-                        <p> {likes}likes </p>
-
-
-                       
-                      </div>
+                    
 
                     </div>
                   </div>
@@ -187,7 +162,7 @@ export default function DetailProfile() {
 
 
       </div>
-
+      <ToastContainer />
     </div>
 
 
