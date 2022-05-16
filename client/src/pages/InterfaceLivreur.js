@@ -25,9 +25,8 @@ export default function InterfaceLivreu() {
 
   const dispatch = useDispatch()
 
-  //const profiles = useSelector(state=>state.profiles)
-  const [message, setMessage] = useState("")
-  const [show, setShow] = useState(false)
+ 
+
   const onChangeHandler = (e) => {
     setForm({
       ...form,
@@ -63,7 +62,7 @@ export default function InterfaceLivreu() {
 
     if ((avatar.type !== 'image/jpeg') && (avatar.type !== 'image/png')&& (avatar.type !== 'image/webp')) {
      
-      toast.warning("image required /jpeg/webp/png", toastOptions);
+      toast.error("image required /jpeg/webp/png", toastOptions);
     }
 
 
@@ -80,7 +79,7 @@ export default function InterfaceLivreu() {
 
 
 
-    dispatch(AddProfile(formData, setShow, setMessage, config))
+    dispatch(AddProfile(formData, config))
 
 
   }
@@ -156,12 +155,10 @@ export default function InterfaceLivreu() {
 
 
 
-          <div className="alert alert-success ml-5 w-60 h-16 mt-28 " role="alert" style={{ display: show ? "block" : "none" }}>
-            {message}
-          </div>
+        
         </div>
       </div>
-      <ToastContainer />
+      <ToastContainer  />
     </div>
   );
 }

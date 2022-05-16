@@ -1,20 +1,26 @@
 import axios from 'axios'
 import { ERRORS, SET_PROFILE, SET_PROFILES, DELETE_PROFILE, GET_ID } from '../types';
-
-export const AddProfile = (formData, setShow, setMessage, config) => dispatch => {
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const toastOptions = {
+    position: "top-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+export const AddProfile = (formData, config) => dispatch => {
     axios
         .post("/api/add", formData, config)
         .then(res => {
-            setShow(true)
-            setMessage("Profile added with success")
-
+          
+       
+toast.success('Profile added with success',toastOptions)
             dispatch({
                 type: ERRORS,
                 payload: {}
             })
-             setTimeout(() => {
-                 setShow(false)
-             }, 4000);
+            
         })
         .catch(err => {
             dispatch({
