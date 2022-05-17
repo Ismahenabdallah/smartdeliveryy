@@ -45,8 +45,8 @@ export default function DetailProfile() {
    
     console.log(result)
 
-   if(result.data==="already_likes"){
-    toast.error("already_likes", toastOptions);
+   if(result.data==="déja évaluer"){
+    toast.error("déja évaluer", toastOptions);
    }
     }).catch(err=>{
         console.log(err)

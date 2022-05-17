@@ -123,7 +123,7 @@ const likes = async (req, res) => {
     try {
         const post = await ProfileModel.findById(req.params.id)
 
-        if (post.likes.filter(like => like.user.toString() === req.user.id).length < 5) {
+        if (post.likes.filter(like => like.user.toString() === req.user.id).length < 1) {
             await post.likes.unshift({ user: req.user.id })
 
             await post.save()
@@ -131,7 +131,7 @@ const likes = async (req, res) => {
 
         }
         else {
-res.json("already_likes")
+res.json("déja évaluer")
         }
 
 
