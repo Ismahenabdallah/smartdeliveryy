@@ -76,7 +76,13 @@ const Admin = () => {
                     <img className="w-24 h-24 md:w-32 md:h-auto md:rounded-lg rounded-full mx-auto" src={avatar} alt="" />
                     <div className="pt-4 md:p-4 text-center md:text-left space-y-1 text-gray-300">
 
+                    <div className="flex"> Evaluation : {likes.map((_,index)=>{
+ return (<FaStar key={index} size={24} className="mr-2 ml-2 cursor-pointer text-yellow-400"/>)
+                             
+                                        })
 
+                                        }
+                                        </div>
 
                       <blockquote className="text-lg md:text-left  font-light">
                         <p >
@@ -109,13 +115,7 @@ const Admin = () => {
   
                         </p>
 
-                        <div className="flex"> Evaluation : {likes.map((_,index)=>{
- return (<FaStar key={index} size={24} className="mr-2 cursor-pointer text-yellow-400"/>)
-                             
-                                        })
-
-                                        }
-                                        </div>
+                       
 
                       </blockquote>
                       

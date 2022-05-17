@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, Marker} from "react-leaflet";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import L from "leaflet";
 import axios from 'axios'
 import {useLocation} from 'react-router-dom';
@@ -23,8 +23,8 @@ const Suivi = () => {
     shadowAnchor: [10, 10]
   });
 
-  const myfun =async () => {
- await axios.get(`/api/localisation/?q=${code}`)
+  const myfun = async () => {
+    await axios.get(`/api/localisation/?q=${code}`)
     .then(response => {
         const res = response.data;
         console.log('les data',res)
@@ -46,7 +46,7 @@ const Suivi = () => {
       return () => {
         clearInterval(interval);
       };
-    },[myfun ]);
+    },[ myfun ]);
   
   console.log('le code est',code)
 
@@ -56,12 +56,12 @@ const Suivi = () => {
     <div className='ml-[40%] md:ml-0 md:mr-0  md:mt-10' >
       
           
-    <MapContainer style={{ height: "calc(100vh - 52px)" }}  center={[36.8197, 10.1761]} zoom={6} scrollWheelZoom={true}>
+    <MapContainer style={{ height: "calc(100vh - 52px)" }}  center={[30.22376666666667, 9.745841666666664]} zoom={6} scrollWheelZoom={true}>
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      { loaded && 
+      {loaded && 
       <Marker
         position={[lat, lon]}
         icon={defaultIcon}

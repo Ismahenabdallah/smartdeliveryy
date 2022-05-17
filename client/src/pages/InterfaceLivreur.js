@@ -1,12 +1,12 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Inputs from "../components/Inputs";
 import { useDispatch, useSelector } from 'react-redux'
 
 import moto from '../assets/moto.png';
 import truck from '../assets/camion.png';
 import voiture from '../assets/voiture.png';
-import { AddProfile } from "../redux/actions/profileActions";
+import { AddProfile, GetProfile } from "../redux/actions/profileActions";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,6 +27,8 @@ export default function InterfaceLivreu() {
 
  
 
+
+
   const onChangeHandler = (e) => {
     setForm({
       ...form,
@@ -42,11 +44,13 @@ export default function InterfaceLivreu() {
     draggable: true,
     theme: "dark",
   };
+  let profiles = useSelector((state) => state.profiles);
+   //eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(async ()=>{
+   await dispatch(GetProfile())
+   setForm(profiles.profile)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  //useEffect(async ()=>{
-  // await dispatch(GetProfile())
-  // setForm(profiles.profile)
-  //},[dispatch, profiles.profile])
+  },[])
   const onSubmit = (e) => {
 
 
@@ -142,7 +146,7 @@ export default function InterfaceLivreu() {
 
 
               <div className="d-flex justify-content-between">
-                <button type="submit" className="btn btn-primary" >
+                <button type="submit"  className="btn btn-primary" >
                   save
                 </button>
 

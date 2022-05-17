@@ -1,3 +1,4 @@
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap'
 
@@ -45,14 +46,13 @@ import Suivi from '../pages/Suivi';
 
 
 
-export default function Navbar({user}) {
-  const dispatch = useDispatch();
- 
+export default function Navbar({ user }) {
 
+  
   AOS.init();
   const [darkMode, setDarkMode] = useState(ThemeContext);
 
- 
+  const dispatch = useDispatch()
   const LogoutHanlder = () => {
     dispatch(Logout())
   }
@@ -60,7 +60,7 @@ export default function Navbar({user}) {
 
   return (
     <div className={darkMode}>
-      <nav className=" 
+     <nav className=" 
   fixed-top
   w-full
   flex flex-wrap
@@ -271,12 +271,8 @@ export default function Navbar({user}) {
 
 
       <Routes >
-        <Route path='/' exact element={<Home />} />
-        <Route path="/setavatar" element={
-           
-           <SetAvatar user={user} />
-       
-      } />
+        <Route path='/' exact element={<Home user={user} />} />
+    
         <Route path='/login' exact element={<ForceRedirect user={user}>
           <Login  />
         </ForceRedirect>
@@ -287,24 +283,21 @@ export default function Navbar({user}) {
           <PrivateRouterClient user={user}>
             <Search />
           </PrivateRouterClient>
-          
 
 
         } />
-        <Route path='/suivi' exact element={<Suivi />}/>
+         
        
        
         <Route path='*' exact element={<NotFound />} />
         <Route path='/noacc' exact element={<NoAccess />} />
+        <Route path='/suivi' exact element={<Suivi />} />
+        <Route path='/ajouter' exact element={<Ajouter/>} />
+
         <Route path='/addprofile' exact element={
           <PrivateRouterLivreur user={user}>
             <InterfaceLivreur />
           </PrivateRouterLivreur>
-        } />
-        <Route path='/ajouter' exact element={
-      
-            <Ajouter />
-        
         } />
          
         
@@ -318,24 +311,25 @@ export default function Navbar({user}) {
 
 <Route path="/forget" element={<ForgetPassword/>} exact />
 <Route path="/reset/:token" element={<ResetPassword/>} exact />
-<Route path='/:id' element={ 
-            <DetailProfile />}/>
-       
+
 
         <Route path='/admin' exact element={
           <AdminRouter user={user}>
             <Admin />
           </AdminRouter>
         } />
- <Route path="/chat" element={
+  <Route path="/setavatar" element={
+           
+           <SetAvatar user={user} />
+       
+      } />
+      <Route path='/:id' element={ 
+            <DetailProfile />}/>
+      <Route path="/chat" element={
  <Chat />
        
 
         } />
-        
-       
- 
-    
 
       </Routes>
 
