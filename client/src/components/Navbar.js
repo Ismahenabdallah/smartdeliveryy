@@ -41,6 +41,7 @@ import { useDispatch } from "react-redux";
 import Chat from '../pages/Chat';
 import Ajouter from './Ajouter';
 import SetAvatar from './SetAvatar';
+import Suivi from '../pages/Suivi';
 
 
 
@@ -286,10 +287,11 @@ export default function Navbar({user}) {
           <PrivateRouterClient user={user}>
             <Search />
           </PrivateRouterClient>
+          
 
 
         } />
-         
+        <Route path='/suivi' exact element={<Suivi />}/>
        
        
         <Route path='*' exact element={<NotFound />} />

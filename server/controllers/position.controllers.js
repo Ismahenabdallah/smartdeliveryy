@@ -22,19 +22,20 @@ const AddLocalisation = async (req, res) => {
 }*/
 const FindLocation = async (req, res) => {
     const { q } = req.query;
-    console.log(' le code ili ena ktebto ', q)
+    console.log('votre code est  ', q)
     
+       
     try {
-        const data =  await LocalisationModels.find()
-        console.log('les data',data)
+        const data = await LocalisationModels.findOne({ code : q }).populate('code').sort({_id:-1})
+        //console.log(' les data',data)
+        
         res.status(200).json(data)
     } catch (error) {
         res.status(404).json(error.message)
-        console.log('5raa ismahen')
+        console.log('erreur')
     }
 
 }
-
 
 module.exports = {
     AddLocalisation,

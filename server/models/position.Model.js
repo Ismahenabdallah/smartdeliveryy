@@ -5,11 +5,11 @@ const Userlocalisation = new Schema(
   { 
     loaded:Boolean,
     crd:{
-       lat:"String",
-       long:"String",
+       lat:String,
+       long:String,
       
     },
-    code:"Number"
+    code:String
   },
   {
     timestamps: true,

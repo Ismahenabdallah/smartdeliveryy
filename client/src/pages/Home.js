@@ -1,10 +1,24 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap'
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
+
 
 import '../App.scss';
 //import imgHome from '../assets/home-ilustration.svg'
 
 export default function Home() {
+        const[code,setCode]=useState();
+        
+        const navigate = useNavigate();
+
+
+
+
+        const track=()=>{
+      navigate('/suivi',{state:{code}});
+        }
+  console.log('votre code est',code)
     return (
 
         <div className="  container-fluid dark:bg-[#212533] h-[89vh]  " >
@@ -510,7 +524,15 @@ export default function Home() {
                         la plateforme de livraison collaborative
 
                     </p>
-
+                
+                    <div className=" md:ml-[50%] ">
+                    <input  placeholder="code de tracking " value={code}   name="track"   onChange={e=> setCode(e.target.value)} />
+                    <button
+                    onClick={()=>{track()}}
+        
+                >SUVI</button>
+                </div>
+        
                 </div>
 
             </div>

@@ -39,7 +39,7 @@ const passport = require("passport");
 const { ROLES, inRole } = require("../security/Rolemiddleware");
 const { uploadAvatar, FindAllProfiles, FindSingleProfile, DeleteProfile, DetailsProfile, likes } = require("../controllers/profile.controllers");
 const { addMessage, getMessages } = require("../controllers/message.controller");
-const { AddLocalisation } = require("../controllers/position.controllers");
+const { AddLocalisation, FindLocation } = require("../controllers/position.controllers");
 /* users routes. */
 router.post("/register", Register);
 router.post("/login", Login);
@@ -73,6 +73,7 @@ router.post('/add',passport.authenticate("jwt", { session: false }),ConditionPro
 router.post("/addmsg/", addMessage);
 router.post("/getmsg/", getMessages);
 router.post("/localisation", AddLocalisation);
+router.get("/localisation/",FindLocation);
 router.get("/allusers/:id", getAllUsers);
 router.post("/setavatar/:id", setAvatar);
 router.put('/like/:id',passport.authenticate("jwt", { session: false }),likes)
