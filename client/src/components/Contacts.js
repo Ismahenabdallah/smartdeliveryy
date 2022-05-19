@@ -8,11 +8,13 @@ export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
+  const [currentRole ,setCurrentRole] = useState(undefined);
   const data = useSelector(state => state.auth)
   useEffect(async () => {
   
     setCurrentUserName(data.user.fullname);
     setCurrentUserImage(data.user.avatarImage);
+    setCurrentRole(data.user.role)
   }, []);
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
@@ -21,32 +23,39 @@ export default function Contacts({ contacts, changeChat }) {
 return(
     <>
       {currentUserImage && currentUserImage && (
-        <Container className="mt-11">
+        <Container className="">
          
           <div className="contacts ">
             {contacts.map((contact, index) => {
-              
+             
               return (
-                <div key={contact.id}>
-                {contact.fullname ==="admin" ? "" :
-                <div
-                className={`contact ${
-                  index === currentSelected ? "selected" : ""
-                }`}
-                onClick={() => changeCurrentChat(index, contact)}
-              >
-                <img className="w-14"  src ={contact.avatarImage} alt=""/>
-                <div className="username">
-                  <h3>{contact.fullname}</h3>
-                </div>
-              </div>
               
+                <div key={contact.id}>
+               {currentRole === contact.role || contact.role === 'ADMIN'? 
+               
+                  null
+             
+                : 
+               <div
+               className={`contact ${
+                 index === currentSelected ? "selected" : ""
+               }`}
+               onClick={() => changeCurrentChat(index, contact)}
+             >
+               <img className="w-14"  src ={contact.avatarImage} alt=""/>
+               <div className="username">
+                 <h3>{contact.fullname}</h3>
+               </div>
+             </div>
                }
+              
+              
+               
                </div>
               );
             })}
           </div>
-          <div className="current-user mt-20">
+          <div className="current-user mt-11">
           
               <img
                 src={currentUserImage}
@@ -72,7 +81,7 @@ return(
 
 const Container = styled.div`
   display: grid;
-  grid-template-rows: auto auto ;
+  grid-template-rows: 70% 30% ;
   overflow: hidden;
   background-color: #080420;
 
@@ -81,19 +90,19 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    gap: 0.8rem;
+    gap: 0.2rem;
    
     &::-webkit-scrollbar {
-      width: 0.2rem;
+      width: 0.3rem;
       &-thumb {
         background-color: #ffffff39;
-        width: 0.1rem;
+        width: 0.2rem;
         border-radius: 1rem;
       }
     }
     .contact {
       background-color: #ffffff34;
-      min-height: 5rem;
+      max-height: 4rem;
       cursor: pointer;
       width:100%;
       text-align:left;
@@ -124,6 +133,8 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    height:5rem ;
+   
     gap: 2rem;
     .avatar {
       img {

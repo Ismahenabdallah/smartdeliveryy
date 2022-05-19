@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 import styled from "styled-components";
 import {  allUsersRoute, host } from "../util/ApiRouter";
 
-import Contacts from "../components/Contacts";
+import Contacts from "../components/Contacts.js";
 import { useSelector } from "react-redux";
 import Welcome from "../components/Welcome";
 import ChatContainer from "../components/ChatContainer";
@@ -20,6 +20,7 @@ export default function Chat() {
     const [currentChat, setCurrentChat] = useState(undefined);
     const [currentUser, setCurrentUser] = useState(undefined);
     const auth = useSelector(state => state.auth)
+    console.log(contacts)
     useEffect(async () => {
        
      
@@ -47,8 +48,8 @@ export default function Chat() {
       };
     return(
         <>
-        <Container className="mt-14">
-        <div className="container">
+        <Container >
+        <div className="container mt-11">
           <Contacts contacts={contacts} changeChat={handleChatChange} />
           {currentChat === undefined ? (
             <Welcome />

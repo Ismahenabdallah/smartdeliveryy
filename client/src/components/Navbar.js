@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap'
@@ -43,6 +44,7 @@ import Chat from '../pages/Chat';
 import Ajouter from './Ajouter';
 import SetAvatar from './SetAvatar';
 import Suivi from '../pages/Suivi';
+
 
 
 
@@ -121,11 +123,51 @@ export default function Navbar({ user }) {
               <li className="nav-item  p-2  ">
                 <NavLink className="nav-link p-0  active"  to="/admin">Admin</NavLink>
               </li>
-              <li className="nav-item  md:ml-[140vh] ">
-              <NavLink className="  btn btn-outline-warning dark:text-[#fff] " to="/" onClick={LogoutHanlder}>
+              <div className="dropdown relative p-2 md:ml-[140vh]">
+    <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+     {user.fullname}
+    </h6>
+    <ul className="
+    dropdown-menu
+    min-w-max
+    absolute
+
+    bg-[#fff]
+    text-base
+    z-50
+    float-left
+    py-2
+    list-none
+    text-left
+    rounded-lg
+    shadow-lg
+    mt-1
+    hidden
+    m-0
+    bg-clip-padding
+    border-none
+    left-auto
+    right-0
+    dark:bg-slate-900
+  " aria-labelledby="dropdownMenuButton2">
+     
+      <li className="dark:bg-slate-900  ">
+      <NavLink className="dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+         "  to="/" onClick={LogoutHanlder}>
              Logout
                     </NavLink>
-                    </li>
+                    </li> 
+    </ul></div> 
                </div>
               
               ) : (
@@ -150,13 +192,69 @@ export default function Navbar({ user }) {
         <li className="nav-item p-2">
                 <NavLink  className="nav-link p-0 active" to ="/chat"> Chat</NavLink>
               </li>
-        <li className="nav-item  md:ml-[100vh] ">
-              <NavLink className="  logout btn btn-outline-warning dark:text-[#fff] " to="/" onClick={LogoutHanlder}>
+             
+
+      
+                    
+               
+                    <div className="dropdown relative p-2 md:ml-[92vh]">
+    <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+     {user.fullname}
+    </h6>
+    <ul className="
+    dropdown-menu
+    min-w-max
+    absolute
+
+    bg-[#fff]
+    text-base
+    z-50
+    float-left
+    py-2
+    list-none
+    text-left
+    rounded-lg
+    shadow-lg
+    mt-1
+    hidden
+    m-0
+    bg-clip-padding
+    border-none
+    left-auto
+    right-0
+  " aria-labelledby="dropdownMenuButton2">
+      <li>
+        <NavLink className="
+        dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+    
+      " to="myprofile">My Profile</NavLink>
+      </li>
+      <li className=" dark:bg-slate-900 ">
+      <NavLink className="dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+       "  to="/" onClick={LogoutHanlder}>
              Logout
                     </NavLink>
                     </li> 
-               
-               
+    </ul></div> 
                 </>
                
               ) : (
@@ -169,11 +267,51 @@ export default function Navbar({ user }) {
                     interfaceClient
                   </NavLink>
                 </li>
-                <li className="nav-item  md:ml-[120vh] ">
-              <NavLink className="  logout btn btn-outline-warning dark:text-[#fff] " to="/" onClick={LogoutHanlder}>
+                <div className="dropdown relative p-2 md:ml-[135vh]">
+    <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+      data-bs-toggle="dropdown" aria-expanded="false">
+     {user.fullname}
+    </h6>
+    <ul className="
+    dropdown-menu
+    min-w-max
+    absolute
+
+    bg-[#fff]
+    text-base
+    z-50
+    float-left
+    py-2
+    list-none
+    text-left
+    rounded-lg
+    shadow-lg
+    mt-1
+    hidden
+    m-0
+    bg-clip-padding
+    border-none
+    left-auto
+    right-0
+    dark:bg-slate-900
+  " aria-labelledby="dropdownMenuButton2">
+     
+      <li className="dark:bg-slate-900  ">
+      <NavLink className="dropdown-item
+        text-sm
+        py-2
+        px-4
+        font-normal
+        block
+        w-full
+        whitespace-nowrap
+        bg-transparent
+        text-gray-700
+         "  to="/" onClick={LogoutHanlder}>
              Logout
                     </NavLink>
-                    </li>
+                    </li> 
+    </ul></div> 
                
                 </>
                 
@@ -326,10 +464,9 @@ export default function Navbar({ user }) {
       <Route path='/:id' element={ 
             <DetailProfile />}/>
       <Route path="/chat" element={
- <Chat />
+ < Chat />
+   } />
        
-
-        } />
 
       </Routes>
 
@@ -338,5 +475,4 @@ export default function Navbar({ user }) {
     </div>
   )
 }
-
 

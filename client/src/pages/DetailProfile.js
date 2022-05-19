@@ -16,7 +16,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { GetAllProfiles } from "../redux/actions/profileActions";
-import { FaStar } from "react-icons/fa";
+
 import { GetAllUsers } from "../redux/actions/allUsers";
 
 
@@ -39,6 +39,8 @@ export default function DetailProfile() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
 
   const { id } = useParams();
   const toastOptions = {
@@ -51,9 +53,8 @@ export default function DetailProfile() {
   const likePost =async  ()=>{
    await axios.put(`http://localhost:5000/api/like/${id}`)
     .then(result=>{
-   
     console.log(result)
-
+    toast.success("bien évaluer", toastOptions);
    if(result.data==="déja évaluer"){
     toast.error("déja évaluer", toastOptions);
    }
@@ -140,13 +141,7 @@ export default function DetailProfile() {
 <p> Evaluation : </p>
 <i className="bi bi-hand-thumbs-up cursor-pointer text-2xl"   onClick={()=>{likePost(id)}}></i>
 </div>
-<div className="flex"> Evaluation : {likes.map((_,index)=>{
- return (<FaStar key={index} size={24} className="mr-2 cursor-pointer text-yellow-400"/>)
-                             
-                                        })
 
-                                        }
-                                        </div>
 
 
                       </blockquote>

@@ -9,7 +9,7 @@ nav{
           
             &:active , .active{
             border-bottom: 1px solid $first_color;
-            color:$first_color !important
+            color:$first_color 
         
            }
   
@@ -20,19 +20,25 @@ nav{
  
     
           .dropdown{
-                color: $main !important;
-                  ul{
-                          li{
-                                  &:hover{
-                                          background-color: $first-color;
-                                  }
-                                 
-                          }
-                  }
-          }
+            
+                h6{
+                        color:$first_color !important
+                }
+                        color: $main !important;
+                        font-size: large;
+                      
+                        a:active  , a:hover{
+                                border-bottom: 1px solid $first_color;
+                              
+                 
+                       }
+
+                       
+          
+        
        
       
-
+        }
      
     
     

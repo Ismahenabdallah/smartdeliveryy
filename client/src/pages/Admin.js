@@ -55,10 +55,10 @@ const Admin = () => {
             <li className="text-center ">
               <a
                 className={
-                  "text-xs font-bold uppercase hover:text-gray-500 px-0 w-32 py-3 shadow-sm rounded block leading-normal " +
+                  "text-xs font-bold uppercase  hover:text-gray-500 px-0 w-32 py-3 shadow-sm rounded block leading-normal " +
                   (openTab === 1
-                    ? "text-white  bg-y"
-                    : "text-gray-800 bg-white")
+                    ? "text-white bg-y"
+                    : "text-gray-800 bg-[#fff] dark:bg-gray-500 dark:text-slate-700")
                 }
                 onClick={e => {
                   e.preventDefault();
@@ -77,8 +77,9 @@ const Admin = () => {
                   "text-xs font-bold uppercase hover:text-gray-500 px-0 w-32 py-3 shadow-sm rounded block leading-normal " +
                   (openTab === 2
                     ? "text-white bg-y"
-                    : "text-gray-800 bg-white")
+                    : "text-gray-800 bg-[#fff] dark:bg-gray-500 dark:text-slate-700")
                 }
+                
                 onClick={e => {
                   e.preventDefault();
                   setOpenTab(2);
@@ -96,7 +97,7 @@ const Admin = () => {
                   "text-xs font-bold uppercase px-0 w-32 py-3 hover:text-gray-500 shadow-sm rounded block leading-normal " +
                   (openTab === 3
                     ? "text-white bg-y"
-                    : "text-gray-800 bg-white")
+                    : "text-gray-800 bg-[#fff] dark:bg-gray-500 dark:text-slate-700")
                 }
                 onClick={e => {
                   e.preventDefault();

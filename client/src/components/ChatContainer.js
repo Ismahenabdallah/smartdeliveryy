@@ -70,7 +70,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
   return (
     <Container>
-      <div className="chat-header mt-11 ">
+      <div className="chat-header  ">
         <div className="user-details">
          
             <img

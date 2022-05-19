@@ -95,7 +95,7 @@ const Search = () => {
                                         <div className="">
                                             <span className="inline-block bg-gray-200 rounded-full px-2   text-sm font-semibold text-gray-700 mr-2 mb-2">adress_actuel :{adress_actuel}</span>
                                             <span className="inline-block bg-gray-200 rounded-full px-2  text-sm font-semibold text-gray-700 mr-2 mb-2">type_voiture :{type_voiture}</span>
-                                             <Link to={`/${_id}`}  className="no-underline text-gray-700  hover:text-yellow-400"> More Information </Link>
+                                             <Link to={`/${_id}`}  className="no-underline text-gray-700  hover:text-yellow-400"> plus des informations </Link>
                                         </div>
 
                                     </div>

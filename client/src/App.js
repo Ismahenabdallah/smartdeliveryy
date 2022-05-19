@@ -35,7 +35,10 @@ export default function App() {
   const auth = useSelector(state => state.auth)
   const user = {
     isConnected: auth.isConnected,
-    role: auth.user.role
+    role: auth.user.role,
+    fullname: auth.user.fullname, 
+    avatarImage : auth.user.avatarImage
+
   }
   const [loader, setLoader] = useState(true)
   useEffect(() => {
