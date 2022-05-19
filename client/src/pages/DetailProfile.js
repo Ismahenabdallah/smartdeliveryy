@@ -17,11 +17,20 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { GetAllProfiles } from "../redux/actions/profileActions";
 import { FaStar } from "react-icons/fa";
+import { GetAllUsers } from "../redux/actions/allUsers";
 
 
 export default function DetailProfile() {
   let profiles = useSelector((state) => state.profiles);
   const dispatch = useDispatch();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      useEffect(async () => {
+
+        await dispatch(GetAllUsers());
+    
+    
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, []);
  // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(async () => {
 

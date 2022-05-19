@@ -16,7 +16,7 @@ export default function Home({user}) {
                 navigate('/suivi', { state: { code } });
                
         }
-       
+       console.log(code)
         return (
 
                 <div className="  container-fluid dark:bg-[#212533] h-[89vh]  " >

@@ -27,7 +27,8 @@ const {
   forgotPassword,
   resetPassword,
   getAllUsers,
-  setAvatar
+  setAvatar,
+  AllUsers
 
 } = require('../controllers/users.controllers')
 const ConditionProfile = require('../util/ConditionProfile')
@@ -58,6 +59,10 @@ router.get("/allprofiles",
   passport.authenticate("jwt", { session: false }),
 
   FindAllProfiles);
+  router.get("/users",
+ // passport.authenticate("jwt", { session: false }),
+
+  AllUsers);
 /* get one profiles */
 router.get("/profile",
   passport.authenticate("jwt", { session: false }),
@@ -73,6 +78,7 @@ router.delete("/profiles/:id",
 router.post("/addmsg/", passport.authenticate("jwt", { session: false }), addMessage);
 router.post("/getmsg/", passport.authenticate("jwt", { session: false }), getMessages);
 router.get("/allusers/:id", getAllUsers);
+
 router.post("/setavatar/:id", setAvatar);
 
 router.put('/like/:id',passport.authenticate("jwt", { session: false }),likes)

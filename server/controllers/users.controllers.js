@@ -206,6 +206,7 @@ const getAllUsers = async (req, res, next) => {
       "email",
       "fullname",
       "avatarImage",
+      "role",
       "id",
     ]);
     return res.json(users);
@@ -235,6 +236,17 @@ const setAvatar = async (req, res, next) => {
   }
 };
 
+
+const AllUsers = async (req, res) => {
+  try {
+      const data = await UserModel.find()
+      res.status(200).json(data)
+
+  } catch (error) {
+      res.status(404).json(error.message)
+  }
+}
+
 /*
 const fetch = require ("node-fetch");
 
@@ -259,6 +271,7 @@ module.exports = {
   resetPassword,
   getAllUsers,
   setAvatar,
+  AllUsers
 //get_data
 
 };
