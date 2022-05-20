@@ -7,9 +7,11 @@ module.exports = function ValidateLogin(data) {
 
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
+  data.status = "" ;
 
-
- 
+ if(data.status){
+  errors.status = " Please Verify Your Email!";
+ }
   if (!validator.isEmail(data.email)) {
     errors.email = "Required format email";
   }

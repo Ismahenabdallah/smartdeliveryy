@@ -8,13 +8,15 @@ export default function Contacts({ contacts, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
+  const [isAvatar, setIsAvatar] =useState(false);
   const [currentRole ,setCurrentRole] = useState(undefined);
   const data = useSelector(state => state.auth)
   useEffect(async () => {
   
     setCurrentUserName(data.user.fullname);
     setCurrentUserImage(data.user.avatarImage);
-    setCurrentRole(data.user.role)
+    setCurrentRole(data.user.role);
+    setIsAvatar(data.user.isAvatarImageSet)
   }, []);
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
@@ -31,7 +33,9 @@ return(
               return (
               
                 <div key={contact.id}>
-               {currentRole === contact.role || contact.role === 'ADMIN'? 
+               {currentRole === contact.role || contact.role === 'ADMIN'||
+                 contact.isAvatarImageSet ===false      
+               ?  
                
                   null
              

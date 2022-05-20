@@ -28,7 +28,10 @@ const {
   resetPassword,
   getAllUsers,
   setAvatar,
-  AllUsers
+  AllUsers,
+  DeleteUser,
+  RegisterL,
+  RegisterC
 
 } = require('../controllers/users.controllers')
 const ConditionProfile = require('../util/ConditionProfile')
@@ -44,6 +47,8 @@ const { AddLocalisation, FindLocation } = require("../controllers/localisation.c
 
 /* users routes. */
 router.post("/register", Register);
+router.post("/liv", RegisterL);
+router.post("/cli", RegisterC);
 router.post("/login", Login);
 
 router.get("/confirm/:confirmationCode", verifyUser)
@@ -72,6 +77,10 @@ router.delete("/profiles/:id",
   passport.authenticate("jwt", { session: false }),
   inRole(ROLES.ADMIN),
   DeleteProfile);
+  router.delete("/deluser/:id",
+  passport.authenticate("jwt", { session: false }),
+  inRole(ROLES.ADMIN),
+  DeleteUser);
   router.get("/:id"  ,DetailsProfile)
 
 //chat

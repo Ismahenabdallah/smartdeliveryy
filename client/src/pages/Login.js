@@ -6,6 +6,9 @@ import '../App.scss';
 
 
 
+
+
+
 import { useDispatch, useSelector } from 'react-redux'
 
 import Inputs from '../components/Inputs'
@@ -14,14 +17,14 @@ import { Link } from 'react-router-dom';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
-  
 
  
+
   const [form, setForm] = useState({})
   const dispatch = useDispatch()
   const errors = useSelector(state => state.errors)
   const navigate = useNavigate()
- 
+
   const onChangeHandler = (e) => {
     setForm({
       ...form,
@@ -32,8 +35,8 @@ export default function Login() {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(LoginAction(form))
-   
-setLoading(true)
+  
+    //setLoading(true)
 
   }
 
@@ -49,8 +52,8 @@ setLoading(true)
         <div className=' flex md:ml-[50vh]  mt-20 ' >
 
           <form className=' mr-10 border-1 form_login_register grid grid-cols-1 p-3 dark:bg-[#212533] bg-[#fff]  space-y-2  rounded-2xl text-start border-gray-600 border-1 z-[50]  ' onSubmit={onSubmit.bind(this)}>
-          
-     
+
+
             <Inputs
               name="email"
               placeholder="Email"
@@ -70,24 +73,24 @@ setLoading(true)
               errors={errors.password}
             />
             <div className="d-flex justify-content-between">
-              
-            <div className='flex'>
-            <button className="btn  flex btn-outline-warning w-[80%] md:w-auto  text-gray-400 " disabled={loading}>
-              {loading && (
-                <span className="spinner-border spinner-border-sm"></span>
-              )}
-              <span>Login</span>
-            </button>
-            <Link to="/forget">Forgot your password?</Link>
-              </div>  
-             
+
+              <div className='flex'>
+                <button className="btn  flex btn-outline-warning w-[80%] md:w-auto  text-gray-400 " disabled={loading}>
+                  {loading && (
+                    <span className="spinner-border spinner-border-sm"></span>
+                  )}
+                  <span>Login</span>
+                </button>
+                <Link to="/forget">Forgot your password?</Link>
+              </div>
+
             </div>
-           
-         
-  
+
+
+
           </form>
           <div className=' button-div w-fit h-full '>
-         
+
             <p className='font-bold   text-[18px] text-slate-400 '> don't have an account ?</p>
             <button className='b' onClick={() => navigate("/register")} >register</button>
           </div>

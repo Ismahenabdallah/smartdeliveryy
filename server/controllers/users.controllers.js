@@ -92,10 +92,9 @@ const Login = async (req, res) => {
             } else {
 
               if (user.status !== "Active") {
-
-                return res.status(401).json({
-                  errors: "  Please Verify Your Email!",
-                });
+                errors.email = " Please Verify Your Email!"
+               // res.status(400).json(errors)
+               
               }
 
               var token = jwt.sign({
@@ -105,7 +104,7 @@ const Login = async (req, res) => {
                 role: user.role,
                 isAvatarImageSet: user.isAvatarImageSet,
                 avatarImage: user.avatarImage,
-               
+                status:user.status,
               }, process.env.PRIVATE_KEY, { expiresIn: '1h' });
               res.status(200).json({
                 message: "success",
@@ -208,6 +207,8 @@ const getAllUsers = async (req, res, next) => {
       "avatarImage",
       "role",
       "id",
+      "isAvatarImageSet",
+     
     ]);
     return res.json(users);
   } catch (ex) {
@@ -246,6 +247,78 @@ const AllUsers = async (req, res) => {
       res.status(404).json(error.message)
   }
 }
+const DeleteUser = async (req, res) => {
+  try {
+      const data = await UserModel.findOneAndRemove({ _id: req.params.id })
+      res.status(200).json({ message: "deleted" })
+
+  } catch (error) {
+      res.status(404).json(error.message)
+  }
+}
+const RegisterL = async (req, res) => {
+  const { errors, isValid } = ValidateRegister(req.body);
+  try {
+    if (!isValid) {
+      res.status(404).json(errors);
+    } else {
+      UserModel.findOne({ email: req.body.email }).then(async(exist) => {
+        if (exist) {
+          errors.email = "user exist";
+          res.status(404).json(errors);
+        } else {
+          const hash = bcrypt.hashSync(req.body.password, 10)//hashed password
+          //req.body.password = hash;
+          req.body.status="Active";
+
+          req.body.role = "LIVREUR";
+
+          const user = await new UserModel({
+            ...req.body,
+            isAdmin:true,
+            password: hash,
+            confirmationCode: jwt.sign({ email: req.body.email }, process.env.PRIVATE_KEY),
+
+          })
+          user.save()
+          res.status(200).json({ message: "success" });
+        }
+      });
+    }
+  } catch (error) {
+    res.status(404).json(error.message);
+  }
+};
+const RegisterC = async (req, res) => {
+  const { errors, isValid } = ValidateRegister(req.body);
+  try {
+    if (!isValid) {
+      res.status(404).json(errors);
+    } else {
+      UserModel.findOne({ email: req.body.email }).then(async(exist) => {
+        if (exist) {
+          errors.email = "user exist";
+          res.status(404).json(errors);
+        } else {
+          const hash = bcrypt.hashSync(req.body.password, 10)//hashed password
+          req.body.status="Active";
+          req.body.role = "CLIENT";
+          const user = await new UserModel({
+            ...req.body,
+            isAdmin:true,
+            password: hash,
+            confirmationCode: jwt.sign({ email: req.body.email }, process.env.PRIVATE_KEY),
+
+          })
+          user.save()
+          res.status(200).json({ message: "success" });
+        }
+      });
+    }
+  } catch (error) {
+    res.status(404).json(error.message);
+  }
+};
 
 /*
 const fetch = require ("node-fetch");
@@ -271,7 +344,10 @@ module.exports = {
   resetPassword,
   getAllUsers,
   setAvatar,
-  AllUsers
+  AllUsers,
+  DeleteUser,
+  RegisterC ,
+  RegisterL
 //get_data
 
 };

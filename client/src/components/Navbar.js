@@ -41,7 +41,8 @@ import DetailProfile from '../pages/DetailProfile';
 
 import { useDispatch } from "react-redux";
 import Chat from '../pages/Chat';
-import Ajouter from './Ajouter';
+import AjouterCl from './AjouterCl';
+import AjouterL from './AjouterL';
 import SetAvatar from './SetAvatar';
 import Suivi from '../pages/Suivi';
 
@@ -267,7 +268,7 @@ export default function Navbar({ user }) {
                     interfaceClient
                   </NavLink>
                 </li>
-                <div className="dropdown relative p-2 md:ml-[135vh]">
+                <div className="dropdown relative p-2 md:ml-[122vh]">
     <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
      {user.fullname}
@@ -360,20 +361,8 @@ export default function Navbar({ user }) {
                   }}
                   className="text-gray-500 dark:text-gray-400  shadow-none p-2 focus:outline-none text-lg rounded-full outline-none ring-transparent cursor-pointer"
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                    ></path>
-                  </svg>
+                 <i className="bi bi-brightness-high"></i>
+                
                 </button>
               ) : (
                 <button
@@ -383,20 +372,7 @@ export default function Navbar({ user }) {
                   }}
                   className="text-gray-500 dark:text-gray-400  focus:outline-none shadow-none p-2 text-lg rounded-full outline-none ring-transparent cursor-pointer"
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                    ></path>
-                  </svg>
+                 <i className="bi bi-moon"></i>
                 </button>
               )}
             </div>
@@ -430,7 +406,8 @@ export default function Navbar({ user }) {
         <Route path='*' exact element={<NotFound />} />
         <Route path='/noacc' exact element={<NoAccess />} />
         <Route path='/suivi' exact element={<Suivi />} />
-        <Route path='/ajouter' exact element={<Ajouter/>} />
+        <Route path='/ajoutercl' exact element={<AjouterCl/>} />
+        <Route path='/ajouterl' exact element={<AjouterL/>} />
 
         <Route path='/addprofile' exact element={
           <PrivateRouterLivreur user={user}>

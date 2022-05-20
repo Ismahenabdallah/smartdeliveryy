@@ -54,7 +54,10 @@ export default function DetailProfile() {
    await axios.put(`http://localhost:5000/api/like/${id}`)
     .then(result=>{
     console.log(result)
-    toast.success("bien évaluer", toastOptions);
+    if(result.data==="bien évaluer"){
+      toast.success("bien évaluer", toastOptions);
+     }
+    
    if(result.data==="déja évaluer"){
     toast.error("déja évaluer", toastOptions);
    }

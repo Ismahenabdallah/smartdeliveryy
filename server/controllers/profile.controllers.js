@@ -122,24 +122,29 @@ const DetailsProfile = async (req, res) => {
 const likes = async (req, res) => {
     try {
         const post = await ProfileModel.findById(req.params.id)
-
+       
         if (post.likes.filter(like => like.user.toString() === req.user.id).length < 1) {
             await post.likes.unshift({ user: req.user.id })
+            
 
             await post.save()
             res.json(post.likes)
+            //res.json('bien évaluer')
 
         }
-        else {
-res.json("déja évaluer")
+        else{
+            res.json("déja évaluer")
         }
+      
+
+        
 
 
 
     }
     catch (error) {
         console.error(error.message)
-
+       
     }
 }
 
