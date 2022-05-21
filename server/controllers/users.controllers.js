@@ -1,12 +1,21 @@
 const UserModel = require("../models/users.models");
 
 const ValidateRegister = require("../validation/Register");
-
+const nodemailer = require("nodemailer");
 const sendEmail = require('../util/sendEmail')
 const send = require('../util/SENDMAILRESET.JS')
 
 require('dotenv').config()
-
+const transporter = nodemailer.createTransport({
+  host: process.env.HOST,
+  service: process.env.SERVICE,
+  port: 587,
+  secure: true,
+  auth: {
+      user: process.env.USER,
+      pass: process.env.PASS,
+  },
+});
 
 
 const ValidateLogin = require("../validation/Login");
@@ -162,14 +171,20 @@ const forgotPassword = async (req, res) => {
 
 
     const url = `http://localhost:3000/reset/${access_token}`
-    send(email, url, 'reset-password')
+   // send(email, url, 'reset-password')
 
-    //send(email,'Reset Password',`<h1>Email Confirmation</h1>
-    //<h3>Hello ${user.fullname}</h3>
-    // <a href=http://localhost:3000/reset/${access_token}> Click here</a>`) 
-    //
+   transporter .sendMail({
+    from: process.env.USER,
+    to: email,
+    subject: "change password ",
+    html: `
+        <h3>Hello ${user.fullname}</h3>
+        <p> Please confirm your email by clicking on the following link</p>
+        <a href=http://localhost:3000/reset/${access_token}> Click here</a>
+        `,
+  }).catch(err => console.log(err));
 
-    res.json({ msg: "Re-send the password, please check your email." })
+    res.json({ msg: " please check your email." })
     // await UserModel.updateOne({ _id: user.id },{ password: "" })
   } catch (err) {
     return res.status(500).json({ msg: err.message })

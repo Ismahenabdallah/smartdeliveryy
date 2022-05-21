@@ -49,6 +49,7 @@ return(
                <img className="w-14"  src ={contact.avatarImage} alt=""/>
                <div className="username">
                  <h3>{contact.fullname}</h3>
+               
                </div>
              </div>
                }

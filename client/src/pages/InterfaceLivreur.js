@@ -45,13 +45,19 @@ export default function InterfaceLivreu() {
     theme: "dark",
   };
   let profiles = useSelector((state) => state.profiles);
+  
    //eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async ()=>{
-   await dispatch(GetProfile())
-   setForm(profiles.profile)
+  
+  if(profiles.profile !==null){
+    await dispatch(GetProfile())
+    setForm(profiles.profile)
+  }
+  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-  const onSubmit = (e) => {
+  
+  const onSubmit = async (e) => {
 
 
 
@@ -69,7 +75,10 @@ export default function InterfaceLivreu() {
       toast.error("image required /jpeg/webp/png", toastOptions);
     }
 
-
+    if(profiles.profile !==null){
+     await  dispatch(GetProfile())
+     setForm(profiles.profile)
+   }
 
 
 
@@ -84,7 +93,7 @@ export default function InterfaceLivreu() {
 
 
     dispatch(AddProfile(formData, config))
-
+    
 
   }
 
@@ -146,7 +155,7 @@ export default function InterfaceLivreu() {
 
 
               <div className="d-flex justify-content-between">
-                <button type="submit"  className="btn btn-primary" >
+                <button type="submit"   className="btn btn-primary" >
                   save
                 </button>
 

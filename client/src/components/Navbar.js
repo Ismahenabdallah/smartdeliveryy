@@ -181,15 +181,7 @@ export default function Navbar({ user }) {
                 <NavLink  className="nav-link p-0 active" to ="/addprofile"> Profile</NavLink>
               </li>
                 
-              <li  className="
-            nav-item p-2
-            ">
-          <NavLink
-          className="nav-link p-0 active"
-           
-            to="/myprofile"
-            >My Profile</NavLink >
-        </li>
+            
         <li className="nav-item p-2">
                 <NavLink  className="nav-link p-0 active" to ="/chat"> Chat</NavLink>
               </li>
@@ -198,7 +190,7 @@ export default function Navbar({ user }) {
       
                     
                
-                    <div className="dropdown relative p-2 md:ml-[92vh]">
+                    <div className="dropdown relative p-2 md:ml-[110vh]">
     <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
      {user.fullname}
@@ -268,7 +260,7 @@ export default function Navbar({ user }) {
                     interfaceClient
                   </NavLink>
                 </li>
-                <div className="dropdown relative p-2 md:ml-[122vh]">
+                <div className="dropdown relative p-2 md:ml-[130vh]">
     <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
      {user.fullname}

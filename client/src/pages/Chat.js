@@ -20,7 +20,7 @@ export default function Chat() {
     const [currentChat, setCurrentChat] = useState(undefined);
     const [currentUser, setCurrentUser] = useState(undefined);
     const auth = useSelector(state => state.auth)
-    console.log(contacts)
+   
     useEffect(async () => {
        
      
@@ -46,6 +46,7 @@ export default function Chat() {
       const handleChatChange = (chat) => {
         setCurrentChat(chat);
       };
+      
     return(
         <>
         <Container >
