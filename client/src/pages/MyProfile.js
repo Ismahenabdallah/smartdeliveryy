@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { GetProfile } from "../redux/actions/profileActions";
 import { Popover } from 'react-tiny-popover'
 import { GetAllUsers } from "../redux/actions/allUsers";
+import { Link } from "react-router-dom";
 
 
 const MyProfile = () => {
@@ -233,7 +234,11 @@ const MyProfile = () => {
                       />
                     </td></tr>
 
-                    <tr className=""> <td> </td>
+                    <tr className="">
+                     <td> 
+                     <button className="btn btn-outline-warning mt-4 ">
+                                            <Link to={`/updateprofile`}  className="no-underline  text-yellow-500 hover:text-gray-700 ">Update My Profile</Link>
+                                            </button>             </td>
                       <td className="space-x-4 ">
                         <button type="button" className="btn btn-outline-warning mt-4" onClick={active}>active Gps</button>
                         <button type="button" className="btn btn-outline-warning mt-4" onClick={desactive} >désactive</button></td> </tr>

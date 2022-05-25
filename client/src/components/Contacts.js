@@ -4,19 +4,31 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 
-export default function Contacts({ contacts, changeChat }) {
+export default function Contacts({ contacts, changeChat , socket }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
-  const [isAvatar, setIsAvatar] =useState(false);
+ 
   const [currentRole ,setCurrentRole] = useState(undefined);
   const data = useSelector(state => state.auth)
+  const [notif,setnotif]= useState([]);
+  useEffect(() => {
+  
+    if (socket.current) {
+      socket.current.on("getNotification", (msg) => {
+        setnotif ((prev) => [...prev, msg]);
+        
+       
+      });
+    
+  }}, []);
+  console.log(notif)
   useEffect(async () => {
   
     setCurrentUserName(data.user.fullname);
     setCurrentUserImage(data.user.avatarImage);
     setCurrentRole(data.user.role);
-    setIsAvatar(data.user.isAvatarImageSet)
+   
   }, []);
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
@@ -47,8 +59,21 @@ return(
                onClick={() => changeCurrentChat(index, contact)}
              >
                <img className="w-14"  src ={contact.avatarImage} alt=""/>
-               <div className="username">
-                 <h3>{contact.fullname}</h3>
+               <div className="username flex ">
+               
+                 
+            
+               
+               
+                 { notif.length ===0 ?  <h3>{contact.fullname}</h3> : 
+               <div className="flex">
+                 <h3>{contact.fullname}</h3> <span class="badge  h-5 bg-secondary badge-secondary">{notif.length}</span>
+               </div> 
+                 }
+                
+                
+                 
+               
                
                </div>
              </div>
@@ -125,6 +150,7 @@ const Container = styled.div`
       .username {
         h3 {
           color: white;
+          width:100%;
         }
       }
     }

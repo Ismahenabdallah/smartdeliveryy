@@ -11,12 +11,13 @@ import { NavLink } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import ResetPassword from './ResetPassword';
 import ForgetPassword from './forgetPassword';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ThemeContext } from './themeContext';
 
 
 import { Logout } from "../redux/actions/authActions";
 import  Search   from  '../pages/Search'
+import UpdateProfile from '../pages/UpdateProfile'
 import InterfaceLivreur from '../pages/InterfaceLivreur'
 import NotFound from '../pages/NotFound'
 import NoAccess from '../pages/NoAccess'
@@ -34,7 +35,7 @@ import SendEamil from './SendEmail'
 import DetailProfile from '../pages/DetailProfile';
 
 
-
+import Notification from '../assets/paper-clip.png'
 
 
 
@@ -59,8 +60,24 @@ export default function Navbar({ user }) {
   const LogoutHanlder = () => {
     dispatch(Logout())
   }
+  
 
+  /*const displayNotification = ({ form, type }) => {
+    let action;
 
+    if (type === 1) {
+      action = "msg";
+    }
+    return (
+      <span className="notification">{`${form} ${action} your post.`}</span>
+    );
+  };
+  const handleRead = () => {
+    setNotifications([]);
+    setOpen(false);
+  };*/
+  
+ 
   return (
     <div className={darkMode}>
      <nav className=" 
@@ -186,9 +203,9 @@ export default function Navbar({ user }) {
                 <NavLink  className="nav-link p-0 active" to ="/chat"> Chat</NavLink>
               </li>
              
-
+             
       
-                    
+               
                
                     <div className="dropdown relative p-2 md:ml-[110vh]">
     <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
@@ -259,7 +276,13 @@ export default function Navbar({ user }) {
                   <NavLink className=" nav-link p-0 active" aria-current="page" to="/interfaceclient">
                     interfaceClient
                   </NavLink>
+
                 </li>
+
+
+             
+      
+       
                 <div className="dropdown relative p-2 md:ml-[130vh]">
     <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
@@ -404,6 +427,11 @@ export default function Navbar({ user }) {
         <Route path='/addprofile' exact element={
           <PrivateRouterLivreur user={user}>
             <InterfaceLivreur />
+          </PrivateRouterLivreur>
+        } />
+        <Route path='/updateprofile' exact element={
+          <PrivateRouterLivreur user={user}>
+            <UpdateProfile />
           </PrivateRouterLivreur>
         } />
          

@@ -11,8 +11,10 @@ import { useSelector } from "react-redux";
 export default function ChatContainer({ currentChat, socket }) {
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef();
+  const [notif,setnotif]= useState([]);
   const [arrivalMessage, setArrivalMessage] = useState(null);
- 
+
+
   const auth = useSelector(state => state.auth)
 
   useEffect(async () => {
@@ -20,9 +22,11 @@ export default function ChatContainer({ currentChat, socket }) {
     const response = await axios.post(recieveMessageRoute, {
       from: data.id,
       to: currentChat._id,
+     
     });
     setMessages(response.data);
   }, [currentChat]);
+ 
 
   useEffect(() => {
     const getCurrentChat = async () => {
@@ -40,16 +44,22 @@ export default function ChatContainer({ currentChat, socket }) {
       from: data.id,
       msg,
     });
-    //console.log(currentChat)
+   
+   
     await axios.post(sendMessageRoute, {
       from: data.id,
       to: currentChat._id,
       message: msg,
+     
     });
-
+    socket.current.emit("sendNotification", {
+      to: currentChat._id,
+      from: data.id,
+       msg,
+    });
     const msgs = [...messages];
     
-    msgs.push({ fromSelf: true, message: msg });
+    msgs.push({ fromSelf: true, message: msg  });
     setMessages(msgs);
   };
 
@@ -59,19 +69,30 @@ export default function ChatContainer({ currentChat, socket }) {
         setArrivalMessage({ fromSelf: false, message: msg });
        
       });
-      
-      
+     /* socket.current.on("getNotification", (msg) => {
+        setnotif({ fromSelf: false, message: msg });
+
+       
+      });*/
     }
   }, []);
+
+ 
+
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
   }, [arrivalMessage]);
 
+ /* useEffect(() => {
+    notif && setMessages((prev) => [...prev, notif]);
+      }, [notif]);
+
+*/
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-
+  //console.log(notif)
   return (
     <Container>
       <div className="chat-header  ">
@@ -93,6 +114,7 @@ export default function ChatContainer({ currentChat, socket }) {
         {messages.map((message) => {
           return (
             <div ref={scrollRef} key={uuidv4()}>
+             
               <div
                 className={`message ${
                   message.fromSelf ? "sended" : "recieved"
@@ -100,13 +122,15 @@ export default function ChatContainer({ currentChat, socket }) {
               >
                 <div className="content ">
                   <p>{message.message}</p>
+                
                 </div>
               </div>
             </div>
           );
         })}
       </div>
-      <ChatInput handleSendMsg={handleSendMsg} />
+      <ChatInput handleSendMsg={handleSendMsg}  
+ />
     </Container>
   );
 }

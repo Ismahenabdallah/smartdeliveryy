@@ -35,7 +35,8 @@ const io = socket(server, {
 });
 
 global.onlineUsers = new Map();
-io.on("connection", (socket) => {
+io.on("connection", (socket) =>
+ {
   console.log(clc.magenta('Someone connecte ' + socket.id))
   global.chatSocket = socket;
   socket.on("add-user", (userId) => {
@@ -46,9 +47,35 @@ io.on("connection", (socket) => {
     const sendUserSocket = onlineUsers.get(data.to);
     if (sendUserSocket) {
       socket.to(sendUserSocket).emit("msg-recieve", data.msg);
+   
     }
   });
-});
+  socket.on("sendNotification", (data) => {
+    const sendUserSocket = onlineUsers.get(data.to);
+    if (sendUserSocket) {
+      socket.to(sendUserSocket).emit("getNotification", data.msg);
+   
+    }
+  });
+  
+  socket.on("disconnect", () => {
+    removeUser(socket.id);
+    console.log(clc.red('Disconnect '))
+  });
+
+
+
+
+
+
+}
+
+
+
+
+
+
+);
 /**
  * Listen on provided port, on all network interfaces.
  */
