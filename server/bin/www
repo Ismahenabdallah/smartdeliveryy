@@ -59,8 +59,7 @@ io.on("connection", (socket) =>
   });
   
   socket.on("disconnect", () => {
-    removeUser(socket.id);
-    console.log(clc.red('Disconnect '))
+    console.log(clc.red(`${socket.id} disconnected`))
   });
 
 

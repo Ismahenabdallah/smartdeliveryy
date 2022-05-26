@@ -46,7 +46,7 @@ export default function Chat() {
       const handleChatChange = (chat) => {
         setCurrentChat(chat);
       };
-      
+      console.log(contacts)
     return(
         <>
         <Container >

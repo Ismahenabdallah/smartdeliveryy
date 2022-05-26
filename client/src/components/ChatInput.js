@@ -16,7 +16,7 @@ export default function ChatInput({ handleSendMsg }) {
     message += emojiObject.emoji;
     setMsg(message);
   };
-  const [notification,setNotification] =useState()
+  
   const sendChat = (event) => {
     event.preventDefault();
     if (msg.length > 0) {

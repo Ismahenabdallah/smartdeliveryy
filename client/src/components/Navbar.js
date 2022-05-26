@@ -50,6 +50,7 @@ import Suivi from '../pages/Suivi';
 
 
 
+
 export default function Navbar({ user }) {
 
   
@@ -460,10 +461,12 @@ export default function Navbar({ user }) {
       } />
       <Route path='/:id' element={ 
             <DetailProfile />}/>
-      <Route path="/chat" element={
- < Chat />
-   } />
+     
+     
+    
+      <Route path="/chat/:id" element={< Chat /> } />
        
+      <Route path="/chat/" element={< Chat /> } />
 
       </Routes>
 

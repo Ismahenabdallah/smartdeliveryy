@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 import styled from "styled-components";
 
 
@@ -15,13 +16,19 @@ export default function Contacts({ contacts, changeChat , socket }) {
   useEffect(() => {
   
     if (socket.current) {
-      socket.current.on("getNotification", (msg) => {
-        setnotif ((prev) => [...prev, msg]);
+      socket.current.on("getNotification", (data) => {
+        setnotif ((prev) => [...prev, data]);
         
        
       });
     
-  }}, []);
+  }
+}, []);
+ const {id} =useParams()
+const handleRead = () => {
+  setnotif([]);
+
+};
   console.log(notif)
   useEffect(async () => {
   
@@ -44,9 +51,11 @@ return(
              
               return (
               
-                <div key={contact.id}>
-               {currentRole === contact.role || contact.role === 'ADMIN'||
-                 contact.isAvatarImageSet ===false      
+                <div key={contact._id}>
+                  {currentRole ==="CLIENT" ? 
+                  <>
+                   {currentRole === contact.role || contact.role === 'ADMIN'||
+                 contact.isAvatarImageSet ===false  || id!==contact._id    
                ?  
                
                   null
@@ -59,17 +68,22 @@ return(
                onClick={() => changeCurrentChat(index, contact)}
              >
                <img className="w-14"  src ={contact.avatarImage} alt=""/>
-               <div className="username flex ">
+               <div className="username flex " onClick={handleRead}>
                
                  
+            {index === currentSelected ? <h3>{contact.fullname}</h3> :
             
-               
-               
-                 { notif.length ===0 ?  <h3>{contact.fullname}</h3> : 
+            <>
+             { notif.length ===0 ?  <h3>{contact.fullname}</h3> : 
                <div className="flex">
                  <h3>{contact.fullname}</h3> <span class="badge  h-5 bg-secondary badge-secondary">{notif.length}</span>
                </div> 
                  }
+            </>
+            }
+               
+               
+                
                 
                 
                  
@@ -78,9 +92,54 @@ return(
                </div>
              </div>
                }
+                  
+                  </> : null}
               
               
+                  {currentRole ==="LIVREUR" ? 
+                  <>
+                   {currentRole === contact.role || contact.role === 'ADMIN'||
+                 contact.isAvatarImageSet ===false    
+               ?  
                
+                  null
+             
+                : 
+               <div
+               className={`contact ${
+                 index === currentSelected ? "selected" : ""
+               }`}
+               onClick={() => changeCurrentChat(index, contact)}
+             >
+               <img className="w-14"  src ={contact.avatarImage} alt=""/>
+               <div className="username flex " onClick={handleRead}>
+               
+                 
+            {index === currentSelected ? <h3>{contact.fullname}</h3> :
+            
+            <>
+             { notif.length ===0 ?  <h3>{contact.fullname}</h3> : 
+               <div className="flex">
+                 <h3>{contact.fullname}</h3> <span class="badge  h-5 bg-secondary badge-secondary">{notif.length}</span>
+               </div> 
+                 }
+            </>
+            }
+               
+               
+                
+                
+                
+                 
+               
+               
+               </div>
+             </div>
+               }
+                  
+                  </> : null}
+               
+              
                </div>
               );
             })}
