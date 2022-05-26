@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import ResetPassword from './ResetPassword';
 import ForgetPassword from './forgetPassword';
-import {  useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { ThemeContext } from './themeContext';
 
 
@@ -46,15 +46,34 @@ import AjouterCl from './AjouterCl';
 import AjouterL from './AjouterL';
 import SetAvatar from './SetAvatar';
 import Suivi from '../pages/Suivi';
-import Chatl from '../pages/Chatl';
 
 
 
 
 
-export default function Navbar({ user }) {
 
+
+export default function Navbar({ user , socket}) {
+ /* const [notif,setnotif]= useState([]);
+ 
+  useEffect(() => {
   
+ 
+    if (socket.current) {
+      socket.current.on("getNotification", (msg) => {
+        setnotif ((prev) => [...prev, msg]);
+        
+       
+      });
+    
+  
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}}, [socket]);
+console.log(notif)
+const handleRead = () => {
+  setnotif([]);
+  
+};*/
   AOS.init();
   const [darkMode, setDarkMode] = useState(ThemeContext);
 
@@ -64,20 +83,8 @@ export default function Navbar({ user }) {
   }
   
 
-  /*const displayNotification = ({ form, type }) => {
-    let action;
-
-    if (type === 1) {
-      action = "msg";
-    }
-    return (
-      <span className="notification">{`${form} ${action} your post.`}</span>
-    );
-  };
-  const handleRead = () => {
-    setNotifications([]);
-    setOpen(false);
-  };*/
+  
+   
   
  
   return (
@@ -134,8 +141,8 @@ export default function Navbar({ user }) {
    <li className="nav-item p-2  ">
       <NavLink className="nav-link p-0  active " to="/">Home</NavLink>
     </li>
-
-
+  
+    
 
 
               {user.role === "ADMIN" ? (
@@ -202,7 +209,7 @@ export default function Navbar({ user }) {
                 
             
         <li className="nav-item p-2">
-                <NavLink  className="nav-link p-0 active" to ="/livreurchat"> Chat</NavLink>
+                <NavLink  className="nav-link p-0 active" to ="/chat"> Chat</NavLink>
               </li>
              
              
@@ -288,8 +295,13 @@ export default function Navbar({ user }) {
                 <div className="dropdown relative p-2 md:ml-[130vh]">
     <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
-     {user.fullname}
-    </h6>
+    {user.fullname}</h6>
+   
+    <>
+                
+                
+                  
+               </>
     <ul className="
     dropdown-menu
     min-w-max
@@ -350,8 +362,7 @@ export default function Navbar({ user }) {
 
                   </>
                 ) : (
-                
-                  ""
+                ""
                  
                 )
               }
@@ -465,9 +476,9 @@ export default function Navbar({ user }) {
      
      
     
-      <Route path="/clientchat/:id" exact element={< Chat /> } />
+      <Route path="/chat/:id" exact element={< Chat /> } />
        
-      <Route path="/livreurchat" exact element={< Chatl /> } />
+      <Route path="/chat" exact element={< Chat /> } />
 
       </Routes>
 
