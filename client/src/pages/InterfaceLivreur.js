@@ -1,12 +1,12 @@
 
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Inputs from "../components/Inputs";
 import { useDispatch, useSelector } from 'react-redux'
 
 import moto from '../assets/moto.png';
 import truck from '../assets/camion.png';
 import voiture from '../assets/voiture.png';
-import { AddProfile, GetProfile } from "../redux/actions/profileActions";
+import { AddProfile,  } from "../redux/actions/profileActions";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -44,18 +44,8 @@ export default function InterfaceLivreu() {
     draggable: true,
     theme: "dark",
   };
-  let profiles = useSelector((state) => state.profiles);
+
   
-   //eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async ()=>{
-  
-  if(profiles.profile !==null){
-    await dispatch(GetProfile())
-    setForm(profiles.profile)
-  }
-  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
   
   const onSubmit = async (e) => {
 
@@ -75,10 +65,7 @@ export default function InterfaceLivreu() {
       toast.error("image required /jpeg/webp/png", toastOptions);
     }
 
-    if(profiles.profile !==null){
-     await  dispatch(GetProfile())
-     setForm(profiles.profile)
-   }
+  
 
 
 

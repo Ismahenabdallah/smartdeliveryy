@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import ResetPassword from './ResetPassword';
 import ForgetPassword from './forgetPassword';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { ThemeContext } from './themeContext';
 
 
@@ -35,7 +35,7 @@ import SendEamil from './SendEmail'
 import DetailProfile from '../pages/DetailProfile';
 
 
-import Notification from '../assets/paper-clip.png'
+
 
 
 

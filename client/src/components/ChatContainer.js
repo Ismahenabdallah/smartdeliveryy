@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 export default function ChatContainer({ currentChat, socket }) {
   const [messages, setMessages] = useState([]);
   const scrollRef = useRef();
-  const [notif,setnotif]= useState([]);
+
   const [arrivalMessage, setArrivalMessage] = useState(null);
 
 
