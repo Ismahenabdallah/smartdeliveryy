@@ -46,6 +46,7 @@ import AjouterCl from './AjouterCl';
 import AjouterL from './AjouterL';
 import SetAvatar from './SetAvatar';
 import Suivi from '../pages/Suivi';
+import Chatl from '../pages/Chatl';
 
 
 
@@ -201,7 +202,7 @@ export default function Navbar({ user }) {
                 
             
         <li className="nav-item p-2">
-                <NavLink  className="nav-link p-0 active" to ="/chat"> Chat</NavLink>
+                <NavLink  className="nav-link p-0 active" to ="/livreurchat"> Chat</NavLink>
               </li>
              
              
@@ -454,19 +455,19 @@ export default function Navbar({ user }) {
             <Admin />
           </AdminRouter>
         } />
-  <Route path="/setavatar" element={
+  <Route path="/setavatar" exact element={
            
            <SetAvatar user={user} />
        
       } />
-      <Route path='/:id' element={ 
+      <Route path='/:id' exact element={ 
             <DetailProfile />}/>
      
      
     
-      <Route path="/chat/:id" element={< Chat /> } />
+      <Route path="/clientchat/:id" exact element={< Chat /> } />
        
-      <Route path="/chat/" element={< Chat /> } />
+      <Route path="/livreurchat" exact element={< Chatl /> } />
 
       </Routes>
 

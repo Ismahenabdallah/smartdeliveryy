@@ -100,7 +100,7 @@ const Search = () => {
                                         <div className="">
                                             <div className="font-bold text-xl text-gray-600 ml-2 mb-2 ">{user.fullname}   </div>
                                             
-                                           <Link  to={`/chat/${user._id}`} type="button" className="inline-block px-6 py-2 ml-2 border-2 border-yellow-500 text-gray-400 font-medium text-xs leading-tight uppercase rounded  hover:text-gray-800 hover:bg-yellow-500 hover:bg-opacity-2 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">cantacter</Link>
+                                           <Link  to={`/clientchat/${user._id}`} type="button" className="inline-block px-6 py-2 ml-2 border-2 border-yellow-500 text-gray-400 font-medium text-xs leading-tight uppercase rounded  hover:text-gray-800 hover:bg-yellow-500 hover:bg-opacity-2 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">cantacter</Link>
     
                                         </div>
                                         <div className="">

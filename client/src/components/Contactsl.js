@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import styled from "styled-components";
-import { GetAllProfiles } from "../redux/actions/profileActions";
 
 
 export default function Contacts({ contacts, changeChat , socket }) {
@@ -25,20 +24,11 @@ export default function Contacts({ contacts, changeChat , socket }) {
     
   }
 }, [socket.current]);
- const {id} =useParams()
+ 
 const handleRead = () => {
   setnotif([]);
 
 };
-const dispatch = useDispatch();
- // eslint-disable-next-line react-hooks/exhaustive-deps
- useEffect(async () => {
-
-
-  await dispatch(GetAllProfiles());
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
   console.log(notif)
   useEffect(async () => {
   
@@ -65,10 +55,13 @@ return(
               return (
               
                 <div key={contact._id}>
-                  {currentRole ==="CLIENT" ? 
+                
+              
+              
+                  {currentRole ==="LIVREUR" ? 
                   <>
                    {currentRole === contact.role || contact.role === 'ADMIN'||
-                 contact.isAvatarImageSet ===false  || id!==contact._id    
+                 contact.isAvatarImageSet ===false    
                ?  
                
                   null
@@ -107,7 +100,8 @@ return(
                }
                   
                   </> : null}
-            
+               
+              
                </div>
               );
             })}

@@ -6,13 +6,13 @@ import { io } from "socket.io-client";
 import styled from "styled-components";
 import {  allUsersRoute, host } from "../util/ApiRouter";
 
-import Contacts from "../components/Contacts.js";
+import Contacts from "../components/Contactsl";
 import { useSelector } from "react-redux";
 import Welcome from "../components/Welcome";
 import ChatContainer from "../components/ChatContainer";
 
 
-export default function Chat() {
+export default function Chatl() {
 
     const navigate = useNavigate();
     const socket = useRef();
