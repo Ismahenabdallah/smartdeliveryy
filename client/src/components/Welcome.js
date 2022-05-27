@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-
+ 
 export default function Welcome() {
   const [userName, setUserName] = useState("");
   const data = useSelector(state => state.auth)
