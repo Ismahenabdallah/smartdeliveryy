@@ -155,7 +155,7 @@ const Container = styled.div`
      
       .username {
         h3 {
-          color: white;
+          color: #31525b;
         }
       }
     }
@@ -167,10 +167,10 @@ const Container = styled.div`
     gap: 1rem;
     overflow: auto;
     &::-webkit-scrollbar {
-      width: 0.2rem;
+      width: 0.4rem;
       &-thumb {
-        background-color: #ffffff39;
-        width: 0.1rem;
+        background-color: gray;
+        width: 0.2rem;
         border-radius: 1rem;
       }
     }
@@ -183,7 +183,7 @@ const Container = styled.div`
         padding: 1rem;
         font-size: 1.1rem;
         border-radius: 1rem;
-        color: #d1d1d1;
+        color: white;
         @media screen and (min-width: 720px) and (max-width: 1080px) {
           max-width: 70%;
         }
@@ -192,14 +192,14 @@ const Container = styled.div`
     .sended {
       justify-content: flex-end;
       .content {
-        background-color: #4f04ff21;
+        background-color: #151f1e;
       }
     }
     .recieved {
       justify-content: flex-start;
      
       .content {
-        background-color: #9900ff20;
+        background-color: #072a40;
       }
     }
   }

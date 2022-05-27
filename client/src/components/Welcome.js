@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Robot from "../assets/robot.gif";
+
 export default function Welcome() {
   const [userName, setUserName] = useState("");
   const data = useSelector(state => state.auth)
@@ -13,7 +13,7 @@ export default function Welcome() {
   }, []);
   return (
     <Container>
-      <img src={Robot} alt="" />
+    
       <h1>
         Welcome, <span>{userName}!</span>
       </h1>
@@ -29,7 +29,7 @@ const Container = styled.div`
   color: white;
   flex-direction: column;
   img {
-    height: 20rem;
+    height: 18rem;
   }
   span {
     color: #4e0eff;

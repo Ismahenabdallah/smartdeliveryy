@@ -57,7 +57,7 @@ const dispatch = useDispatch();
 return(
     <>
       {currentUserImage && currentUserImage && (
-        <Container className="">
+        <Container className="bg-slate-400">
          
           <div className="contacts ">
             {contacts.map((contact, index) => {
@@ -154,7 +154,7 @@ return(
               );
             })}
           </div>
-          <div className="current-user mt-11">
+          <div className="current-user bg-slate-500 mt-11">
           
               <img
                 src={currentUserImage}
@@ -182,7 +182,7 @@ const Container = styled.div`
   display: grid;
   grid-template-rows: 70% 30% ;
   overflow: hidden;
-  background-color: #080420;
+  //background-color: #080420;
 
   .contacts {
     display: flex;
@@ -192,9 +192,9 @@ const Container = styled.div`
     gap: 0.2rem;
    
     &::-webkit-scrollbar {
-      width: 0.3rem;
+      width: 0.4rem;
       &-thumb {
-        background-color: #ffffff39;
+        background-color: gray;
         width: 0.2rem;
         border-radius: 1rem;
       }
@@ -218,18 +218,18 @@ const Container = styled.div`
       }
       .username {
         h3 {
-          color: white;
+          color: #31525b;
           width:100%;
         }
       }
     }
     .selected {
-      background-color: #9a86f3;
+      background-color: #e0e5e9;
     }
   }
 
   .current-user {
-    background-color: #0d0d30;
+   // background-color: #0d0d30;
     display: flex;
     justify-content: center;
     align-items: center;
