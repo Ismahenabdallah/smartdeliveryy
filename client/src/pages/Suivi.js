@@ -23,8 +23,9 @@ const Suivi = () => {
     shadowAnchor: [10, 10]
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const myfun = async () => {
-    await axios.get(`/api/localisation/?q=${code}`)
+    await axios.get(`http://localhost:5000/api/localisation/?q=${code}`)
     .then(response => {
         const res = response.data;
         console.log('les data',res)

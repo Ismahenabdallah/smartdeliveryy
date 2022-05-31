@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import ResetPassword from './ResetPassword';
 import ForgetPassword from './forgetPassword';
-import {  useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { ThemeContext } from './themeContext';
 
 
@@ -468,7 +468,7 @@ const handleRead = () => {
         } />
   <Route path="/setavatar" exact element={
            
-           <SetAvatar user={user} />
+           <SetAvatar/>
        
       } />
       <Route path='/:id' exact element={ 

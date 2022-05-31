@@ -192,7 +192,7 @@ const Container = styled.div`
     .sended {
       justify-content: flex-end;
       .content {
-        background-color: #151f1e;
+        background-color: #15114a;
       }
     }
     .recieved {
