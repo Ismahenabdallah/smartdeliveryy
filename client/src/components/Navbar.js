@@ -225,7 +225,7 @@ const handleRead = () => {
     dropdown-menu
     min-w-max
     absolute
-
+   dark:bg-slate-900
     bg-[#fff]
     text-base
     z-50
@@ -243,7 +243,7 @@ const handleRead = () => {
     left-auto
     right-0
   " aria-labelledby="dropdownMenuButton2">
-      <li>
+      <li className='dark:bg-slate-900'>
         <NavLink className="
         dropdown-item
         text-sm

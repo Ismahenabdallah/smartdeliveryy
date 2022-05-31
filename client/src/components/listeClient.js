@@ -46,8 +46,8 @@ export default function ListeClient() {
        
 
       </div>
-      <div className="">
-                 <button className=" btn btn-secondary" onClick={() => Navigate("/ajoutercl")  } > Ajouter un client </button>
+      <div className=" mb-2">
+                 <button className=" b" onClick={() => Navigate("/ajoutercl")  } > Ajouter un client </button>
                   </div>
       <table className="w-[200vh] text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

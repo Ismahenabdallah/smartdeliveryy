@@ -47,8 +47,8 @@ export default function ListeLivreurs() {
 
 
       </div>
-      <div className="">
-        <button className=" btn btn-secondary" onClick={() => Navigate("/ajouterl")} > Ajouter un livreur </button>
+      <div className="mb-2">
+        <button className=" b" onClick={() => Navigate("/ajouterl")} > Ajouter un livreur </button>
       </div>
       <table className="w-[200vh] text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

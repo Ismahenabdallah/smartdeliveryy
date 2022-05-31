@@ -4,7 +4,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
-import {  allUsersRoute, host } from "../util/ApiRouter";
 
 import Contacts from "../components/Contacts.js";
 import { useSelector } from "react-redux";
@@ -29,14 +28,14 @@ export default function Chat() {
       }, []);
       useEffect(() => {
         if (currentUser) {
-          socket.current = io(host);
+          socket.current = io("http://localhost:5000");
           socket.current.emit("add-user", currentUser.id);
         }
       }, [currentUser]);
       useEffect(async () => {
         if (currentUser) {
           if (currentUser.isAvatarImageSet) {
-            const data = await axios.get(`${allUsersRoute}/${currentUser.id}`);
+            const data = await axios.get(`http://localhost:5000/api/allusers/${currentUser.id}`);
             setContacts(data.data);
           } else {
             navigate("/setavatar");

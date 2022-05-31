@@ -27,7 +27,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { setAvatarRoute } from "../util/ApiRouter";
+
 export default function SetAvatar() {
  
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ export default function SetAvatar() {
     } else {
     
 
-      const { data } = await axios.post(`${setAvatarRoute}/${auth.user.id}`,{
+      const { data } = await axios.post(`http://localhost:5000/api/setavatar/${auth.user.id}`,{
         image: avatars[selectedAvatar],
       });
 

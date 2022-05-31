@@ -5,7 +5,7 @@ import ChatInput from "./ChatInput";
 
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
-import { sendMessageRoute, recieveMessageRoute } from "../util/ApiRouter";
+
 import { useSelector } from "react-redux";
 
 export default function ChatContainer({ currentChat, socket }) {
@@ -19,7 +19,7 @@ export default function ChatContainer({ currentChat, socket }) {
 
   useEffect(async () => {
     const data = await auth.user
-    const response = await axios.post(recieveMessageRoute, {
+    const response = await axios.post("http://localhost:5000/api/getmsg", {
       from: data.id,
       to: currentChat._id,
      
@@ -46,7 +46,7 @@ export default function ChatContainer({ currentChat, socket }) {
     });
    
    
-    await axios.post(sendMessageRoute, {
+    await axios.post('http://localhost:5000/api/addmsg', {
       from: data.id,
       to: currentChat._id,
       message: msg,
