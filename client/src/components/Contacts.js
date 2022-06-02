@@ -93,8 +93,7 @@ return(
                </div> 
               */}
 
-              {
-                notif.length>0 ? 
+              {notif.length>0 ? 
                 <div className="flex">
                 <h3>{contact.fullname}</h3> <span class="badge  h-5 bg-secondary badge-secondary">{notif.length}</span>
               </div> : <h3>{contact.fullname}</h3>

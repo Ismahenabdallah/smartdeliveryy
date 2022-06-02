@@ -128,12 +128,13 @@ const likes = async (req, res) => {
             
 
             await post.save()
-            res.json(post.likes)
-            //res.json('bien évaluer')
+            
+            ////res.json('bien évaluer')
+            res.status(200).json(post.likes)
 
         }
         else{
-            res.json("déja évaluer")
+            res.status(201).json("déja évaluer")
         }
       
 
@@ -143,7 +144,8 @@ const likes = async (req, res) => {
 
     }
     catch (error) {
-        console.error(error.message)
+        
+        res.status(500).json(error.message)
        
     }
 }

@@ -61,6 +61,7 @@ const Suivi = () => {
             duration: 2
           });
         
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, []);
   
       return loaded === false && invalide === true ? null: (
