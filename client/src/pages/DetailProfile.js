@@ -5,7 +5,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import { useParams } from "react-router"
-
+import { FaStar } from 'react-icons/fa';
 import axios from "axios";
 import moto from '../assets/moto.png';
 import truck from '../assets/camion.png';
@@ -14,7 +14,7 @@ import voiture from '../assets/voiture.png';
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { GetAllProfiles } from "../redux/actions/profileActions";
 
 import { GetAllUsers } from "../redux/actions/allUsers";
@@ -41,7 +41,7 @@ export default function DetailProfile() {
 }, []);
 // eslint-disable-next-line react-hooks/exhaustive-deps
 
-
+const [l, setL ]= useState([])
   const { id } = useParams();
   const toastOptions = {
     position: "top-right",
@@ -54,6 +54,7 @@ export default function DetailProfile() {
    await axios.put(`http://localhost:5000/api/like/${id}`)
     .then(result=>{
     console.log(result)
+    setL(result.data)
     if(result.request.status===200){
       toast.success("bien évaluer", toastOptions);
      }
@@ -143,6 +144,13 @@ export default function DetailProfile() {
 <div className="flex">
 <p> Evaluation : </p>
 <i className="bi bi-hand-thumbs-up cursor-pointer text-2xl"   onClick={()=>{likePost(id)}}></i>
+
+{l.length ?
+  <FaStar  size={24} className="mr-2  cursor-pointer text-yellow-400"/>
+   : null                   
+            
+}
+
 </div>
 
 
