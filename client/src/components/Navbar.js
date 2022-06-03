@@ -104,7 +104,7 @@ const handleRead = () => {
   navbar navbar-expand-lg navbar-light
   ">
          <div className="container-fluid w-full flex flex-wrap items-center justify-between dark:bg-[#212533]  -mb-2  md:-mb-2     p-2 ">  
-    <img   className="w-20 navbar-brand  flex  items-center lg:mt-0  h-14"src={fastdeliv} alt=''/>
+    <img   className="w-20 navbar-brand  flex  items-center lg:mt-0  h-12"src={fastdeliv} alt=''/>
 
          <button className="
       navbar-toggler 

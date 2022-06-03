@@ -16,7 +16,7 @@ import { LoginAction } from "../redux/actions/authActions";
 import { Link } from 'react-router-dom';
 
 export default function Login() {
-  const [loading, setLoading] = useState(false);
+  
 
  
 
@@ -36,7 +36,7 @@ export default function Login() {
     e.preventDefault();
     dispatch(LoginAction(form))
   
-    //setLoading(true)
+  
 
   }
 
@@ -74,14 +74,13 @@ export default function Login() {
             />
             <div className="d-flex justify-content-between">
 
-              <div className='flex'>
-                <button className="btn  flex btn-outline-warning w-[80%] md:w-auto  text-gray-400 " disabled={loading}>
-                  {loading && (
-                    <span className="spinner-border spinner-border-sm"></span>
-                  )}
-                  <span>Login</span>
+              <div className='flex space-x-6'>
+                <button className="btn  flex btn-outline-warning w-[80%] md:w-auto  text-gray-400 ">
+                
+                   
+                 Login
                 </button>
-                <Link to="/forget">Forgot your password?</Link>
+                <Link to="/forget" className='no-underline'>Forgot your password?</Link>
               </div>
 
             </div>
