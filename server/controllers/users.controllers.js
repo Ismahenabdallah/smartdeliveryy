@@ -114,6 +114,7 @@ const Login = async (req, res) => {
                 isAvatarImageSet: user.isAvatarImageSet,
                 avatarImage: user.avatarImage,
                 status:user.status,
+                isAdmin:user.isAdmin,
               }, process.env.PRIVATE_KEY, { expiresIn: '1h' });
               res.status(200).json({
                 message: "success",

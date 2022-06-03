@@ -2,7 +2,7 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap'
-
+import fastdeliv from '../assets/fast deliv.png'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -104,13 +104,7 @@ const handleRead = () => {
   navbar navbar-expand-lg navbar-light
   ">
          <div className="container-fluid w-full flex flex-wrap items-center justify-between dark:bg-[#212533]  -mb-2  md:-mb-2     p-2 ">  
-                 <h1 className="navbar-brand  flex
-        items-center
-       
-      
-      
-        lg:mt-0
-        mr-1" >Delivery</h1>
+    <img   className="w-20 navbar-brand  flex  items-center lg:mt-0  h-14"src={fastdeliv} alt=''/>
 
          <button className="
       navbar-toggler 
