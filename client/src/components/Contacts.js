@@ -10,9 +10,8 @@ export default function Contacts({ contacts, changeChat , socket }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
- 
   const [currentRole ,setCurrentRole] = useState(undefined);
-  const data = useSelector(state => state.auth)
+  const data = useSelector(state => state.auth);
   const [notif,setnotif]= useState([]);
   useEffect(() => {
   

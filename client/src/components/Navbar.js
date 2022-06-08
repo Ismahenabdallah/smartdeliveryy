@@ -2,37 +2,20 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap'
-import fastdeliv from '../assets/fast deliv.png'
+import fastdeliv from '../assets/fast_deliv-removebg-preview.png'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import '../App.scss';
 import { NavLink } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
-import ResetPassword from './ResetPassword';
-import ForgetPassword from './forgetPassword';
+
 import {  useState } from 'react';
 import { ThemeContext } from './themeContext';
 
 
 import { Logout } from "../redux/actions/authActions";
-import  Search   from  '../pages/Search'
-import UpdateProfile from '../pages/UpdateProfile'
-import InterfaceLivreur from '../pages/InterfaceLivreur'
-import NotFound from '../pages/NotFound'
-import NoAccess from '../pages/NoAccess'
 
-import Admin from '../pages/Admin';
-import Home from '../pages/Home';
-import AdminRouter from './AdminRouter';
-import Login from '../pages/Login';
-import Register from '../pages/Register';
-import ForceRedirect from './ForceRedirect';
-import PrivateRouterClient from './PrivateRouterClient';
-import PrivateRouterLivreur from './PrivateRouterLivreur';
-import MyProfile from '../pages/MyProfile';
-import SendEamil from './SendEmail'
-import DetailProfile from '../pages/DetailProfile';
+
 
 
 
@@ -41,11 +24,8 @@ import DetailProfile from '../pages/DetailProfile';
 
 
 import { useDispatch } from "react-redux";
-import Chat from '../pages/Chat';
-import AjouterCl from './AjouterCl';
-import AjouterL from './AjouterL';
-import SetAvatar from './SetAvatar';
-import Suivi from '../pages/Suivi';
+import RoutesPages from './RoutesPages';
+
 
 
 
@@ -104,7 +84,7 @@ const handleRead = () => {
   navbar navbar-expand-lg navbar-light
   ">
          <div className="container-fluid w-full flex flex-wrap items-center justify-between dark:bg-[#212533]  -mb-2  md:-mb-2     p-2 ">  
-    <img   className="w-20 navbar-brand  flex  items-center lg:mt-0  h-12"src={fastdeliv} alt=''/>
+    <img   className="w-20 navbar-brand  flex  items-center lg:mt-0  h-14"src={fastdeliv} alt=''/>
 
          <button className="
       navbar-toggler 
@@ -405,76 +385,8 @@ const handleRead = () => {
         </div>
       </nav>
 
-
-      <Routes >
-        <Route path='/' exact element={<Home user={user} />} />
+<RoutesPages user={user}/>
     
-        <Route path='/login' exact element={<ForceRedirect user={user}>
-          <Login  />
-        </ForceRedirect>
-        } />
-        <Route path='/register' exact element={<ForceRedirect user={user}><Register /></ForceRedirect>} />
-
-        <Route path='/interfaceClient' exact element={
-          <PrivateRouterClient user={user}>
-            <Search />
-          </PrivateRouterClient>
-
-
-        } />
-         
-       
-       
-        <Route path='*' exact element={<NotFound />} />
-        <Route path='/noacc' exact element={<NoAccess />} />
-        <Route path='/suivi' exact element={<Suivi />} />
-        <Route path='/ajoutercl' exact element={<AjouterCl/>} />
-        <Route path='/ajouterl' exact element={<AjouterL/>} />
-
-        <Route path='/addprofile' exact element={
-          <PrivateRouterLivreur user={user}>
-            <InterfaceLivreur />
-          </PrivateRouterLivreur>
-        } />
-        <Route path='/updateprofile' exact element={
-          <PrivateRouterLivreur user={user}>
-            <UpdateProfile />
-          </PrivateRouterLivreur>
-        } />
-         
-        
-         <Route path='/myprofile' exact element={
-          <PrivateRouterLivreur user={user}>
-            <MyProfile />
-          </PrivateRouterLivreur>
-        } /> 
-     
-<Route path="/confirm/:confirmationCode" element={<SendEamil user={user}/>} />
-
-<Route path="/forget" element={<ForgetPassword/>} exact />
-<Route path="/reset/:token" element={<ResetPassword/>} exact />
-
-
-        <Route path='/admin' exact element={
-          <AdminRouter user={user}>
-            <Admin />
-          </AdminRouter>
-        } />
-  <Route path="/setavatar" exact element={
-           
-           <SetAvatar/>
-       
-      } />
-      <Route path='/:id' exact element={ 
-            <DetailProfile />}/>
-     
-     
-    
-      <Route path="/chat/:id" exact element={< Chat /> } />
-       
-      <Route path="/chat" exact element={< Chat /> } />
-
-      </Routes>
 
 
 
