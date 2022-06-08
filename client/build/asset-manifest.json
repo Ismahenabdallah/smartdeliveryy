@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d7efdde6.css",
+    "main.js": "/static/js/main.613947fc.js",
+    "static/media/delivery.gif": "/static/media/delivery.67449508d8dd07e081b7.gif",
+    "static/media/bootstrap-icons.woff?": "/static/media/bootstrap-icons.c1d7432ee75fa194e499.woff",
+    "static/media/user1.png": "/static/media/user1.78e37160c137e6972aff.png",
+    "static/media/user15.png": "/static/media/user15.d2b0c8cb105ee7fbb0e9.png",
+    "static/media/user2.png": "/static/media/user2.89850557e9f5052c3c97.png",
+    "static/media/bootstrap-icons.woff2?": "/static/media/bootstrap-icons.a13b815539b49de48d23.woff2",
+    "static/media/user6.png": "/static/media/user6.d1e6c836fb13410660d6.png",
+    "static/media/user3.png": "/static/media/user3.d817796b735cd69f45de.png",
+    "static/media/user5.png": "/static/media/user5.b047798d0e49e56e2e82.png",
+    "static/media/user9.png": "/static/media/user9.f902ed90ffe96b0a809c.png",
+    "static/media/user14.png": "/static/media/user14.ab089f4dbfeb1b51de2a.png",
+    "static/media/user13.png": "/static/media/user13.a1b41c7cfa10fa8dde53.png",
+    "static/media/user4.png": "/static/media/user4.f21ca374607bb2336aea.png",
+    "static/media/user16.png": "/static/media/user16.b6593eff6d3eb1521b0c.png",
+    "static/media/user8.png": "/static/media/user8.fb16a4fede8f72e97142.png",
+    "static/media/user12.png": "/static/media/user12.7a48e6e925111703c2fb.png",
+    "static/media/user7.png": "/static/media/user7.2244d7cbbd1631be1dd9.png",
+    "static/media/user10.png": "/static/media/user10.a247548c2caa295f345a.png",
+    "static/media/user11.png": "/static/media/user11.1941a155078ac50a596f.png",
+    "static/media/succ.jpeg": "/static/media/succ.5503c11c73f08bd38cdd.jpeg",
+    "static/media/moto.png": "/static/media/moto.761e5ca4dcdc29437925.png",
+    "static/media/fast_deliv-removebg-preview.png": "/static/media/fast_deliv-removebg-preview.50a5db49adbcad84ab9b.png",
+    "static/media/voiture.png": "/static/media/voiture.a1e36f056ea047852152.png",
+    "static/media/camion.png": "/static/media/camion.78d657913bb8eb83a20e.png",
+    "index.html": "/index.html",
+    "main.d7efdde6.css.map": "/static/css/main.d7efdde6.css.map",
+    "main.613947fc.js.map": "/static/js/main.613947fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7efdde6.css",
+    "static/js/main.613947fc.js"
+  ]
+}
