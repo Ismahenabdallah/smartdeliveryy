@@ -33,7 +33,7 @@ import RoutesPages from './RoutesPages';
 
 
 
-export default function Navbar({ user , socket}) {
+export default function Navbar({ user }) {
  /* const [notif,setnotif]= useState([]);
  
   useEffect(() => {
@@ -120,7 +120,7 @@ const handleRead = () => {
 
 
               {user.role === "ADMIN" ? (
-               <div className='flex'>
+               <div className='md:flex'>
               <li className="nav-item  p-2  ">
                 <NavLink className="nav-link p-0  active"  to="/admin">Admin</NavLink>
               </li>
