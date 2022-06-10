@@ -62,7 +62,7 @@ const Search = () => {
                         
                         </div>
                     <div className=" md:ml-[30%] ">
-                        <Inputs type="text" placeholder="Search" name="searchTerm" value={filter} onChangeHandler={search} />
+                        <Inputs type="text" placeholder=" Adress" name="searchTerm" value={filter} onChangeHandler={search} />
                     </div>
 
 
@@ -80,17 +80,17 @@ const Search = () => {
 
 
 
-                            <div key={_id} className="card   p-2 dark:bg-slate-900 w-[60vh]  text-center form_client border-1 space-y-4    shadow-2xl ">
+                            <div key={_id} className="card   p-2 dark:bg-slate-900 w-[60vh]  text-center form_client border-1 space-y-4 mb-4    shadow-2xl ">
 
                                 
                                     <div className="rounded overflow-hidden space-y-4    shadow-lg">
                                        
-                                      <div className="  md:space-x-0">
+                                      <div className="  mt-4 md:space-x-0">
                                       <img className=" w-[30%] ml-24 " src={avatar} alt="" /> 
                                      <div className="flex evaluer"> 
                                      Evaluation : {likes.map((_,index)=>{
- return (
- <FaStar key={index} size={24} className="mr-2  cursor-pointer text-yellow-400"/>)
+                        return (
+        <FaStar key={index} size={24} className="mr-2  cursor-pointer text-yellow-400"/>)
                              
                                         })
 
@@ -106,8 +106,8 @@ const Search = () => {
                                         <div className="">
                                             <span className="inline-block bg-gray-200 rounded-full px-2   text-sm font-semibold text-gray-700 mr-2 mb-2">adress_actuel :{adress_actuel}</span>
                                             <span className="inline-block bg-gray-200 rounded-full px-2  text-sm font-semibold text-gray-700 mr-2 mb-2">type_voiture :{type_voiture}</span>
-                                            <button className="btn btn-warning ">
-                                            <Link to={`/${_id}`}  className="no-underline  text-gray-700 hover:text-gray-700 "> plus des informations </Link>
+                                            <button className="btn btn-warning mt-2 mb-4 ">
+                                            <Link to={`/${_id}`}  className="no-underline  text-gray-700 hover:text-gray-700  "> plus des informations </Link>
                                             </button> 
                                         </div>
 

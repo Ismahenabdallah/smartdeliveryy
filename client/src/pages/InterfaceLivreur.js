@@ -64,7 +64,10 @@ export default function InterfaceLivreu() {
      
       toast.error("image required /jpeg/webp/png", toastOptions);
     }
-
+    
+    if(avatar.size > 1024 * 1024){
+      toast.error("size too large", toastOptions);
+    }
   
 
 

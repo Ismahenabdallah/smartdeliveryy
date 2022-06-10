@@ -93,7 +93,7 @@ const MyProfile = () => {
 
   return (
 
-    <div className=" dark:bg-[#212533] dark:text-gray-400 h-[94vh] p-2 mt-4">
+    <div className=" dark:bg-[#212533] dark:text-gray-400 h-full p-2 mt-4">
       {Object.keys(profile).length === 0 ? (
         <div className="flex mt-14 ">
           <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
