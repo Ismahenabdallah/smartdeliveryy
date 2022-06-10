@@ -72,7 +72,7 @@ const [l, setL ]= useState([])
 
 
   return (
-    <div className=" dark:bg-[#212533] dark:text-gray-400 h-full md:h-[95vh]  p-2 mt-4">
+    <div className=" dark:bg-[#212533] dark:text-gray-400 h-full   p-2 mt-4">
       <div className=""  >
 
         {
@@ -85,7 +85,7 @@ const [l, setL ]= useState([])
 
             <div  key={_id}  className="">
               {id === _id ? (
-                <div className="max-w-md mx-auto mt-14 bg-[#fff] rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+                <div className="max-w-md mx-auto mt-14 bg-[#fff] dark:bg-slate-900 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
                   <div className="md:grid md:grid-cols-2">
                     <div className="">
                       <img className=" w-[100%] object-cover " src={avatar} alt="" />
@@ -143,7 +143,7 @@ const [l, setL ]= useState([])
 
 <div className="flex">
 <p> Evaluation : </p>
-<i className="bi bi-hand-thumbs-up cursor-pointer text-2xl"   onClick={()=>{likePost(id)}}></i>
+<i className="bi bi-hand-thumbs-up text-y cursor-pointer text-2xl"   onClick={()=>{likePost(id)}}></i>
 
 {l.length ?
   <FaStar  size={24} className="mr-2  cursor-pointer text-yellow-400"/>
