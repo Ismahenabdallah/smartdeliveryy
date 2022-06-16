@@ -113,7 +113,7 @@ const handleRead = () => {
 
              
    <li className="nav-item p-2  ">
-      <NavLink className="nav-link p-0  active " to="/">Home</NavLink>
+      <NavLink className="nav-link p-0  active " to="/">Accueil</NavLink>
     </li>
   
     
@@ -165,7 +165,7 @@ const handleRead = () => {
         bg-transparent
         text-gray-700
          "  to="/" onClick={LogoutHanlder}>
-             Logout
+             déconnexion 
                     </NavLink>
                     </li> 
     </ul></div> 
@@ -244,7 +244,7 @@ const handleRead = () => {
         bg-transparent
         text-gray-700
        "  to="/" onClick={LogoutHanlder}>
-             Logout
+             déconnexion 
                     </NavLink>
                     </li> 
     </ul></div> 
@@ -312,7 +312,7 @@ const handleRead = () => {
         bg-transparent
         text-gray-700
          "  to="/" onClick={LogoutHanlder}>
-             Logout
+             déconnexion 
                     </NavLink>
                     </li> 
     </ul></div> 
@@ -328,10 +328,10 @@ const handleRead = () => {
 
 
                     <li className="nav-item p-2  " >
-                      <NavLink exact="true" className=" nav-link p-0 active  " to="/login">login</NavLink>
+                      <NavLink exact="true" className=" nav-link p-0 active  " to="/login">connexion</NavLink>
                     </li>
                     <li className="nav-item p-2 " >
-                      <NavLink exact="true" className=" nav-link  p-0 active  " to="/register">register</NavLink>
+                      <NavLink exact="true" className=" nav-link  p-0 active  " to="/register"> s'inscrire</NavLink>
                     </li>
 
                   </>

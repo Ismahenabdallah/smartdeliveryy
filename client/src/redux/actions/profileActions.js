@@ -65,7 +65,7 @@ export const GetAllProfiles = () => dispatch => {
 }
 
 export const DeleteProfile = (id) => dispatch => {
-    if (window.confirm("are you sure to delete this user?")) {
+    if (window.confirm("are you sure to delete this profile?")) {
         axios
             .delete(`http://localhost:5000/api/profiles/${id}`)
             .then(res => {

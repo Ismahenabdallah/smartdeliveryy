@@ -49,7 +49,7 @@ export default function ProfileLivreures() {
         <hr />
 
         <div className=" md:ml-[40%] ">
-          <Inputs type="text" placeholder="Search" name="searchTerm" value={filter} onChangeHandler={search} />
+          <Inputs type="text" placeholder="rechercher par adresse" name="searchTerm" value={filter} onChangeHandler={search} />
         </div>
 
 

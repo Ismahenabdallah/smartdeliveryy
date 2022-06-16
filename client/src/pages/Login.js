@@ -78,7 +78,7 @@ export default function Login() {
                 <button className="btn  flex btn-outline-warning w-[80%] md:w-auto  text-gray-400 ">
                 
                    
-                 Login
+               Connexion
                 </button>
                 <Link to="/forget" className='no-underline'>Forgot your password?</Link>
               </div>
@@ -89,9 +89,8 @@ export default function Login() {
 
           </form>
           <div className=' button-div w-fit h-full '>
-
             <p className='font-bold   text-[18px] text-slate-400 '> don't have an account ?</p>
-            <button className='b' onClick={() => navigate("/register")} >register</button>
+            <button className='b' onClick={() => navigate("/register")} >s'inscrire </button>
           </div>
         </div>
 

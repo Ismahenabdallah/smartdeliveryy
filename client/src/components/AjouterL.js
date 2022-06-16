@@ -52,7 +52,7 @@ function AjouterL() {
 
             <div className="d-flex justify-content-between">
             <button type="submit" className="btn btn-outline-warning  text-gray-400 ">
-                register
+                s'inscrire
               </button>
             </div>
 

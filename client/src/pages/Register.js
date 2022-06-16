@@ -81,7 +81,7 @@ export default function Register() {
 
               <div className="d-flex justify-content-between">
               <button type="submit" className="btn btn-outline-warning  text-gray-400 ">
-                  register
+              S'inscrire
                 </button>
               </div>
 
@@ -105,7 +105,7 @@ export default function Register() {
             <div
               className='button-div w-fit h-full  '>
               <p className='font-bold   text-[18px] text-slate-400 '> Already a member?</p>
-              <button className='b'  onClick={() => navigate("/login")} >login</button>
+              <button className='b'  onClick={() => navigate("/login")} >connexion</button>
             </div>
           </div>
 
