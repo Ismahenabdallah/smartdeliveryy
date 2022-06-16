@@ -79,7 +79,7 @@ export const LoginAction = (form)=>dispatch=>{
 }
 
 export const DeleteUser = (id) => dispatch => {
-    if (window.confirm("are you sure to delete this user?")) {
+    if (window.confirm("êtes-vous sûr de supprimer cet utilisateur?")) {
         axios
             .delete(`http://localhost:5000/api/deluser/${id}`)
             .then(res => {

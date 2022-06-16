@@ -110,14 +110,12 @@ export default function ListeClient() {
                     : <td className="px-6 py-4  mt-2">
                        <AiFillCloseCircle size={24} className="text-red-500" />
                     </td>}
-                    {isAdmin === true ?
+                    
                     <td className="px-6 py-4  mt-2  text-center">
                    <button className="btn  btn-outline-danger" onClick={() => DeleteHandler(_id)}>Delete</button>
 
                     </td>
-                    : <td className="px-6 py-4  mt-2">
-                       <AiFillCloseCircle size={24} className="text-red-500" />
-                    </td>}
+                  
 
 
 

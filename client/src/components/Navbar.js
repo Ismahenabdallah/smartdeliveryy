@@ -230,7 +230,7 @@ const handleRead = () => {
         bg-transparent
         text-gray-700
     
-      " to="myprofile">My Profile</NavLink>
+      " to="myprofile">Mon Profil</NavLink>
       </li>
       <li className=" dark:bg-slate-900 ">
       <NavLink className="dropdown-item

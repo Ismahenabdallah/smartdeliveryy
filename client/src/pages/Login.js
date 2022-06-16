@@ -65,7 +65,7 @@ export default function Login() {
             />
             <Inputs
               name="password"
-              placeholder="Password"
+              placeholder="Mot De Passe"
 
               type="password"
               icon="bi bi-key"
@@ -80,7 +80,7 @@ export default function Login() {
                    
                Connexion
                 </button>
-                <Link to="/forget" className='no-underline'>Forgot your password?</Link>
+                <Link to="/forget" className='no-underline'>Mot de Passe Oublié?</Link>
               </div>
 
             </div>
@@ -89,7 +89,7 @@ export default function Login() {
 
           </form>
           <div className=' button-div w-fit h-full '>
-            <p className='font-bold   text-[18px] text-slate-400 '> don't have an account ?</p>
+            <p className='font-bold   text-[18px] text-slate-400 '> N'ai Pas De Compte ?</p>
             <button className='b' onClick={() => navigate("/register")} >s'inscrire </button>
           </div>
         </div>

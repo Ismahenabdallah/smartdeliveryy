@@ -15,7 +15,7 @@ export const AddProfile = (formData, config) => dispatch => {
         .then(res => {
           
        
-toast.success('Profile added with success',toastOptions)
+toast.success('Profil ajouté avec succès',toastOptions)
             dispatch({
                 type: ERRORS,
                 payload: {}
@@ -65,7 +65,7 @@ export const GetAllProfiles = () => dispatch => {
 }
 
 export const DeleteProfile = (id) => dispatch => {
-    if (window.confirm("are you sure to delete this profile?")) {
+    if (window.confirm("êtes-vous sûr de supprimer ce profil?")) {
         axios
             .delete(`http://localhost:5000/api/profiles/${id}`)
             .then(res => {

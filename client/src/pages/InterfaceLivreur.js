@@ -98,7 +98,7 @@ export default function InterfaceLivreu() {
       <div className=" md:ml-40    ">
 
         <div className="flex">
-          <i className="bi bi-person-fill  text-3xl " ></i> <h2>Add Profile</h2>
+          <i className="bi bi-person-fill  text-3xl " ></i> <h2>Ajouter Un Profil</h2>
         </div>
         <div className="flex ">
 
