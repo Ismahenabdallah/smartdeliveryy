@@ -78,7 +78,7 @@ const [l, setL ]= useState([])
 
         {
 
-          profiles.profiles.map(({ _id, user, avatar, adress_actuel, likes ,matricule_voiture, type_voiture, poids }) => (
+          profiles.profiles.map(({ _id, user, avatar, adress_actuel ,matricule_voiture, type_voiture, poids }) => (
 
 
 

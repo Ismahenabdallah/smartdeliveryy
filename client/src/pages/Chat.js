@@ -13,42 +13,48 @@ import ChatContainer from "../components/ChatContainer";
 
 export default function Chat() {
 
-    const navigate = useNavigate();
-    const socket = useRef();
-    const [contacts, setContacts] = useState([]);
-    const [currentChat, setCurrentChat] = useState(undefined);
-    const [currentUser, setCurrentUser] = useState(undefined);
-    const auth = useSelector(state => state.auth)
-   
-    useEffect(async () => {
-       
-     
-        await   setCurrentUser( auth.user);
-        
-      }, []);
-      useEffect(() => {
-        if (currentUser) {
-          socket.current = io("http://localhost:5000");
-          socket.current.emit("add-user", currentUser.id);
+  const navigate = useNavigate();
+  const socket = useRef();
+  const [contacts, setContacts] = useState([]);
+  const [currentChat, setCurrentChat] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState(undefined);
+  const auth = useSelector(state => state.auth)
+
+  useEffect(async () => {
+
+
+    await setCurrentUser(auth.user);
+
+  }, []);
+  useEffect(() => {
+    if (currentUser) {
+      socket.current = io("http://localhost:5000");
+      socket.current.emit("add-user", currentUser.id);
+    }
+  }, [currentUser]);
+  useEffect(async () => {
+    if (currentUser) {
+      if (currentUser.role === "CLIENT") {
+        if (currentUser.isAvatarImageSet) {
+          const data = await axios.get(`http://localhost:5000/api/allusers/${currentUser.id}`);
+          setContacts(data.data);
+        } else {
+          navigate("/setavatar");
         }
-      }, [currentUser]);
-      useEffect(async () => {
-        if (currentUser) {
-          if (currentUser.isAvatarImageSet) {
-            const data = await axios.get(`http://localhost:5000/api/allusers/${currentUser.id}`);
-            setContacts(data.data);
-          } else {
-            navigate("/setavatar");
-          }
-        }
-      }, [currentUser]);
-      const handleChatChange = (chat) => {
-        setCurrentChat(chat);
-      };
-      //console.log(contacts)
-    return(
-        <>
-        <Container className="dark:bg-slate-900  overflow-x-hidden  mt-14 " >
+      }
+      if (currentUser.role === "LIVREUR") { 
+        const data = await axios.get(`http://localhost:5000/api/allusers/${currentUser.id}`);
+        setContacts(data.data);
+      }
+    }
+  }, [currentUser]);
+  const handleChatChange = (chat) => {
+    setCurrentChat(chat);
+  };
+  //console.log(contacts)
+  return (
+    <>
+      <Container className="dark:bg-slate-900  overflow-x-hidden  mt-14 " >
         <div className="container  bg-slate-300  dark:bg-slate-900 mt-11">
           <Contacts contacts={contacts} changeChat={handleChatChange} socket={socket} />
           {currentChat === undefined ? (
@@ -58,8 +64,8 @@ export default function Chat() {
           )}
         </div>
       </Container>
-      </>
-    )
+    </>
+  )
 }
 const Container = styled.div`
   height: 100vh;

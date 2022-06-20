@@ -63,7 +63,7 @@ export default function SetAvatar() {
         auth.user.isAvatarImageSet = true;
         auth.user.avatarImage = data.image;
        
-        navigate("/chat");
+        navigate("/interfaceClient");
       } else {
         toast.error("Error setting avatar. Please try again.", toastOptions);
       }

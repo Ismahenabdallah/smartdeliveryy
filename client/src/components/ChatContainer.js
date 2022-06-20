@@ -6,7 +6,9 @@ import ChatInput from "./ChatInput";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { GetAllProfiles } from "../redux/actions/profileActions";
 
 export default function ChatContainer({ currentChat, socket }) {
   const [messages, setMessages] = useState([]);
@@ -78,7 +80,17 @@ export default function ChatContainer({ currentChat, socket }) {
   }, []);
 
  
-
+  const {id} =useParams()
+  let profiles = useSelector((state) => state.profiles);
+  const dispatch = useDispatch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(async () => {
+ 
+ 
+   await dispatch(GetAllProfiles());
+ 
+   // eslint-disable-next-line react-hooks/exhaustive-deps
+ }, []);
 
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
@@ -97,12 +109,27 @@ export default function ChatContainer({ currentChat, socket }) {
     <Container>
       <div className="chat-header  ">
         <div className="user-details">
+      {currentChat.role==="CLIENT" ? 
+      <img
+      src={currentChat.avatarImage}
+      alt=""
+      className="w-14"
+    /> :null
+      }
+ {currentChat.role==="LIVREUR" ? <>
+ {profiles.profiles.map(({ user, avatar, }) => (
+  <>
+  {user._id=== id ? <img className="w-14"  src ={avatar} alt=""/> : null}
+  </>
+   
+))}
+ 
+ </>:null}
+        
+
+
          
-            <img
-              src={currentChat.avatarImage}
-              alt=""
-              className="w-14"
-            />
+            
         
           <div className="username">
             <h3>{currentChat.fullname}</h3>

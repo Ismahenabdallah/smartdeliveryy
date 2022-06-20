@@ -1,180 +1,210 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import { GetAllProfiles } from "../redux/actions/profileActions";
 
 
-export default function Contacts({ contacts, changeChat , socket }) {
+export default function Contacts({ contacts, changeChat, socket }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
-  const [currentRole ,setCurrentRole] = useState(undefined);
+  const [currentRole, setCurrentRole] = useState(undefined);
+  const [currentid, setCurrentid] = useState(undefined);
   const data = useSelector(state => state.auth);
-  const [notif,setnotif]= useState([]);
+  const [notif, setnotif] = useState([]);
   useEffect(() => {
-  
+
     if (socket.current) {
       socket.current.on("getNotification", (msg) => {
-        setnotif ((prev) => [...prev, msg]);
-        
-       
+        setnotif((prev) => [...prev, msg]);
+
+
       });
-    
-  }
-}, [socket.current]);
- const {id} =useParams()
-const handleRead = () => {
-  setnotif([]);
 
-};
-const dispatch = useDispatch();
- // eslint-disable-next-line react-hooks/exhaustive-deps
- useEffect(async () => {
+    }
+  }, [socket.current]);
+  const { id } = useParams()
+  const handleRead = () => {
+    setnotif([]);
 
-
-  await dispatch(GetAllProfiles());
-
+  };
+  const dispatch = useDispatch();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
-  console.log(notif)
   useEffect(async () => {
-  
+
+
+    await dispatch(GetAllProfiles());
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(async () => {
+
     setCurrentUserName(data.user.fullname);
     setCurrentUserImage(data.user.avatarImage);
     setCurrentRole(data.user.role);
-   
+    setCurrentid(data.user.id);
+
+
   }, []);
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
     changeChat(contact);
   };
 
+  let profiles = useSelector((state) => state.profiles);
 
-  
-return(
+
+  return (
     <>
-      {currentUserImage && currentUserImage && (
-        <Container className="bg-slate-400">
-         
-          <div className="contacts ">
-            {contacts.map((contact, index) => {
-             
-              return (
-              
-                <div key={contact._id}>
-                  {currentRole ==="CLIENT" ? 
+
+      <Container className="bg-slate-400">
+
+        <div className="contacts ">
+          {contacts.map((contact, index) => {
+
+            return (
+
+              <div key={contact._id}>
+                {currentRole === "CLIENT" ?
                   <>
-                   {currentRole === contact.role || contact.role === 'ADMIN'||
-                 contact.isAvatarImageSet ===false  || id!==contact._id    
-               ?  
-               
-                  null
-             
-                : 
-               <div
-               className={`contact ${
-                 index === currentSelected ? "selected" : ""
-               }`}
-               onClick={() => changeCurrentChat(index, contact)}
-             >
-               <img className="w-14"  src ={contact.avatarImage} alt=""/>
-               <div className="username flex " onClick={handleRead}>
-               
-                 
-            {index === currentSelected ? <h3>{contact.fullname}</h3> :
-            
-            <>
-             {/* notif.length ===0 ?   : 
+                    {currentRole === contact.role || contact.role === 'ADMIN' ||
+                /* contact.isAvatarImageSet ===false  ||*/ id !== contact._id
+                      ?
+
+                      null
+
+                      :
+                      <div
+                        className={`contact ${index === currentSelected ? "selected" : ""
+                          }`}
+                        onClick={() => changeCurrentChat(index, contact)}
+                      >
+                        {
+
+                          profiles.profiles.map(({ user, avatar, }) => (
+                            <>
+                              {id === user._id ? <img className="w-14" src={avatar} alt="" /> : null}
+                            </>
+
+                          ))}
+
+
+
+
+                        <div className="username flex " onClick={handleRead}>
+
+
+                          {index === currentSelected ? <h3>{contact.fullname}</h3> :
+
+                            <>
+                              {/* notif.length ===0 ?   : 
                <div className="flex">
                  <h3>{contact.fullname}</h3> <span class="badge  h-5 bg-secondary badge-secondary">{notif.length}</span>
                </div> 
               */}
 
-              {notif.length>0 ? 
-                <div className="flex">
-                <h3>{contact.fullname}</h3> <span class="badge  h-5 bg-secondary badge-secondary">{notif.length}</span>
-              </div> : <h3>{contact.fullname}</h3>
-              }
-            </>
-            }
-               
-               
-                
-                
-                
-                 
-               
-               
-               </div>
-             </div>
-               }
-                  
+                              {notif.length > 0 ?
+                                <div className="flex">
+                                  <h3>{contact.fullname}</h3> <span class="badge  h-5 bg-secondary badge-secondary">{notif.length}</span>
+                                </div> : <h3>{contact.fullname}</h3>
+                              }
+                            </>
+                          }
+
+
+
+
+
+
+
+
+                        </div>
+                      </div>
+                    }
+
                   </> : null}
-                  {currentRole ==="LIVREUR" ? 
+                {currentRole === "LIVREUR" ?
                   <>
-                   {currentRole === contact.role || contact.role === 'ADMIN'||
-                 contact.isAvatarImageSet ===false    
-               ?  
-               
-                  null
-             
-                : 
-               <div
-               className={`contact ${
-                 index === currentSelected ? "selected" : ""
-               }`}
-               onClick={() => changeCurrentChat(index, contact)}
-             >
-               <img className="w-14"  src ={contact.avatarImage} alt=""/>
-               <div className="username flex " onClick={handleRead}>
-               
-                 
-            {index === currentSelected ? <h3>{contact.fullname}</h3> :
-            
-            <>
-             { notif.length ===0 ?  <h3>{contact.fullname}</h3> : 
-               <div className="flex">
-                 <h3>{contact.fullname}</h3> <span class="badge  h-5 bg-secondary badge-secondary">{notif.length}</span>
-               </div> 
-                 }
-            </>
-            }
-               
-               
-                
-                
-                
-                 
-               
-               
-               </div>
-             </div>
-               }
-                  
+                   
+                      {currentRole === contact.role || contact.role === 'ADMIN' ||
+                        contact.isAvatarImageSet === false
+                        ?
+
+                        null
+
+                        :
+                        <div
+                          className={`contact ${index === currentSelected ? "selected" : ""
+                            }`}
+                          onClick={() => changeCurrentChat(index, contact)}
+                        >
+                          <img className="w-14" src={contact.avatarImage} alt="" />
+                          <div className="username flex " onClick={handleRead}>
+
+
+                            {index === currentSelected ? <h3>{contact.fullname}</h3> :
+
+                              <>
+                                {notif.length === 0 ? <h3>{contact.fullname}</h3> :
+                                  <div className="flex">
+                                    <h3>{contact.fullname}</h3> <span class="badge  h-5 bg-secondary badge-secondary">{notif.length}</span>
+                                  </div>
+                                }
+                              </>
+                            }
+
+
+
+
+
+
+
+
+                          </div>
+                        </div>
+                      }
+
+
                   </> : null}
-               
-               </div>
-              );
-            })}
+
+              </div>
+            );
+          })}
+        </div>
+        <div className="current-user bg-slate-500 mt-11">
+
+          {currentRole === "CLIENT" ?
+            <img
+              src={currentUserImage}
+              alt="avatar"
+              className="w-14"
+            /> : null}
+          {currentRole === "LIVREUR" ?
+            <>
+              {
+
+                profiles.profiles.map(({ user, avatar, }) => (
+                  <>
+                    {user._id === currentid ? <img className="w-14" src={avatar} alt="" /> : null}
+                  </>
+
+                ))}
+            </> : null
+          }
+
+
+          <div className="username">
+            <h2>{currentUserName}</h2>
           </div>
-          <div className="current-user bg-slate-500 mt-11">
-          
-              <img
-                src={currentUserImage}
-                alt="avatar"
-                className="w-14"
-              />
-          
-            <div className="username">
-              <h2>{currentUserName}</h2>
-            </div>
-          </div>
-        </Container>
-      )}
+        </div>
+      </Container>
+
     </>
-)
+  )
 
 
 
