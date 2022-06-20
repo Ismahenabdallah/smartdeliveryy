@@ -77,7 +77,7 @@ const Suivi = () => {
   return (
     <div className="  container-fluid dark:bg-[#212533] h-[100vh]  " >
     
-    <div className='ml-[40%] md:ml-0 md:mr-0  md:mt-10' >
+    <div className='ml-[40%] md:ml-0 md:mr-0  md:mt-14' >
       
     { invalide === true? //( toast.warning("votre code invalide ", toastOptions) 
     (<div>votre code inavalide </div>

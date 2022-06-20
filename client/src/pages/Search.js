@@ -62,7 +62,7 @@ const Search = () => {
                         
                         </div>
                     <div className=" md:ml-[30%] ">
-                        <Inputs type="text" placeholder=" Adress" name="searchTerm" value={filter} onChangeHandler={search} />
+                        <Inputs type="text" placeholder=" Adresse" name="searchTerm" value={filter} onChangeHandler={search} />
                     </div>
 
 

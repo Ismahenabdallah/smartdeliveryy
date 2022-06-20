@@ -266,7 +266,7 @@ const handleRead = () => {
              
       
        
-                <div className="dropdown relative p-2 md:ml-[130vh]">
+                <div className="dropdown relative p-2 md:ml-[100vh]">
     <h6 className="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
       data-bs-toggle="dropdown" aria-expanded="false">
     {user.fullname}</h6>

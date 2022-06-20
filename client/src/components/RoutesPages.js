@@ -106,15 +106,15 @@ export default function RoutesPages ({ user}){
      
     
       <Route path="/chat/:id" exact element={
-     <PrivateRouterClient user={user}>
+     
     < Chat />
-   </PrivateRouterClient>
+  
 } />
        
       <Route path="/chat" exact element={
-     <PrivateRouterLivreur user={user}>
-   < Chat />
-   </PrivateRouterLivreur> } />
+     
+      < Chat />
+ } />
 
       </Routes>
 

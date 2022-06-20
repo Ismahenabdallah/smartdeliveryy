@@ -48,8 +48,8 @@ export default function Chat() {
       //console.log(contacts)
     return(
         <>
-        <Container className="dark:bg-slate-900  overflow-hidden " >
-        <div className="container  bg-slate-300 dark:bg-slate-900 mt-11">
+        <Container className="dark:bg-slate-900  overflow-x-hidden  mt-14 " >
+        <div className="container  bg-slate-300  dark:bg-slate-900 mt-11">
           <Contacts contacts={contacts} changeChat={handleChatChange} socket={socket} />
           {currentChat === undefined ? (
             <Welcome />
